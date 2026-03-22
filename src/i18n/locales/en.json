@@ -1,0 +1,209 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "search": "Search",
+    "noResults": "No results found",
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "currency": "Currency",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "cart": "Cart",
+    "account": "Account",
+    "orders": "Orders",
+    "wishlist": "Wishlist",
+    "login": "Log in",
+    "register": "Sign up",
+    "logout": "Log out"
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock",
+    "inStock": "In stock",
+    "stockLeft": "Only {{count}} left",
+    "price": "Price",
+    "salePrice": "Sale price",
+    "description": "Description",
+    "reviews": "Reviews",
+    "relatedProducts": "Related products",
+    "recentlyViewed": "Recently viewed",
+    "variants": "Options",
+    "quantity": "Quantity",
+    "sku": "SKU"
+  },
+  "search": {
+    "placeholder": "Search products...",
+    "results": "{{count}} result",
+    "results_other": "{{count}} results",
+    "filters": "Filters",
+    "sortBy": "Sort by",
+    "sortOptions": {
+      "relevance": "Relevance",
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low",
+      "newest": "Newest",
+      "nameAsc": "Name: A to Z"
+    },
+    "clearFilters": "Clear filters"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout": "Proceed to checkout",
+    "remove": "Remove",
+    "updateQuantity": "Update quantity",
+    "itemAdded": "Item added to cart",
+    "itemRemoved": "Item removed from cart",
+    "items": "{{count}} item",
+    "items_other": "{{count}} items"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shippingAddress": "Shipping address",
+    "billingAddress": "Billing address",
+    "sameAsShipping": "Same as shipping address",
+    "payment": "Payment",
+    "review": "Review order",
+    "placeOrder": "Place order",
+    "processing": "Processing...",
+    "orderConfirmed": "Order confirmed!",
+    "orderNumber": "Order #{{number}}",
+    "thankYou": "Thank you for your order",
+    "confirmationEmail": "A confirmation email has been sent to {{email}}",
+    "continueShopping": "Continue shopping",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "address": {
+    "fullName": "Full name",
+    "addressLine1": "Address line 1",
+    "addressLine2": "Address line 2",
+    "city": "City",
+    "stateProvince": "State / Province",
+    "postalCode": "Postal code",
+    "country": "Country",
+    "phone": "Phone number",
+    "division": "Division",
+    "district": "District",
+    "thana": "Thana",
+    "postort": "Postort",
+    "postnummer": "Postnummer"
+  },
+  "auth": {
+    "login": "Log in",
+    "register": "Create account",
+    "email": "Email address",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "forgotPassword": "Forgot password?",
+    "resetPassword": "Reset password",
+    "sendResetLink": "Send reset link",
+    "orContinueWith": "Or continue with",
+    "google": "Google",
+    "apple": "Apple",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "verifyEmail": "Check your email to verify your account",
+    "passwordResetSent": "Password reset link sent to your email"
+  },
+  "account": {
+    "title": "My Account",
+    "profile": "Profile",
+    "orders": "Order History",
+    "addresses": "Saved Addresses",
+    "preferences": "Preferences",
+    "languagePref": "Language preference",
+    "currencyPref": "Currency preference",
+    "defaultAddress": "Default address",
+    "noOrders": "No orders yet"
+  },
+  "order": {
+    "status": {
+      "pending_payment": "Pending Payment",
+      "payment_confirmed": "Payment Confirmed",
+      "processing": "Processing",
+      "partially_shipped": "Partially Shipped",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded",
+      "disputed": "Disputed"
+    },
+    "details": "Order Details",
+    "date": "Order Date",
+    "total": "Total",
+    "items": "Items",
+    "tracking": "Tracking",
+    "invoice": "Download Invoice",
+    "returnRequest": "Request Return"
+  },
+  "returns": {
+    "title": "Request a Return",
+    "reason": "Reason for return",
+    "reasons": {
+      "defective": "Defective / Damaged",
+      "wrong_item": "Wrong item received",
+      "not_as_described": "Not as described",
+      "changed_mind": "Changed my mind",
+      "too_late": "Arrived too late",
+      "other": "Other"
+    },
+    "condition": "Item condition",
+    "conditions": {
+      "unopened": "Unopened",
+      "opened": "Opened — unused",
+      "used": "Used"
+    },
+    "submit": "Submit return request",
+    "submitted": "Return request submitted",
+    "policy": "Return Policy",
+    "window": "Items can be returned within {{days}} days of delivery"
+  },
+  "footer": {
+    "about": "About Us",
+    "contact": "Contact",
+    "shipping": "Shipping Information",
+    "returns": "Returns & Refunds",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "allRightsReserved": "All rights reserved"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordMin": "Password must be at least 8 characters",
+    "passwordMatch": "Passwords do not match",
+    "invalidPhone": "Please enter a valid phone number",
+    "invalidPostalCode": "Please enter a valid postal code"
+  },
+  "cookie": {
+    "message": "We use cookies to improve your experience. By continuing, you agree to our cookie policy.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "settings": "Cookie settings"
+  },
+  "seo": {
+    "homeTitle": "Shop Online — E-Commerce Platform",
+    "homeDescription": "Browse our catalog of quality products. Free shipping on orders over $50.",
+    "productsTitle": "Products — E-Commerce Platform",
+    "productsDescription": "Explore our full product catalog"
+  }
+}

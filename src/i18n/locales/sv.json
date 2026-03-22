@@ -1,0 +1,209 @@
+{
+  "common": {
+    "loading": "Laddar...",
+    "error": "Något gick fel",
+    "retry": "Försök igen",
+    "save": "Spara",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "edit": "Redigera",
+    "close": "Stäng",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "search": "Sök",
+    "noResults": "Inga resultat hittades",
+    "viewAll": "Visa alla",
+    "learnMore": "Läs mer",
+    "currency": "Valuta",
+    "language": "Språk"
+  },
+  "nav": {
+    "home": "Hem",
+    "products": "Produkter",
+    "categories": "Kategorier",
+    "cart": "Varukorg",
+    "account": "Konto",
+    "orders": "Beställningar",
+    "wishlist": "Önskelista",
+    "login": "Logga in",
+    "register": "Registrera",
+    "logout": "Logga ut"
+  },
+  "product": {
+    "addToCart": "Lägg i varukorgen",
+    "outOfStock": "Slut i lager",
+    "inStock": "I lager",
+    "stockLeft": "Bara {{count}} kvar",
+    "price": "Pris",
+    "salePrice": "Reapris",
+    "description": "Beskrivning",
+    "reviews": "Recensioner",
+    "relatedProducts": "Relaterade produkter",
+    "recentlyViewed": "Senast visade",
+    "variants": "Alternativ",
+    "quantity": "Antal",
+    "sku": "Artikelnr"
+  },
+  "search": {
+    "placeholder": "Sök produkter...",
+    "results": "{{count}} resultat",
+    "results_other": "{{count}} resultat",
+    "filters": "Filter",
+    "sortBy": "Sortera efter",
+    "sortOptions": {
+      "relevance": "Relevans",
+      "priceAsc": "Pris: Lägst först",
+      "priceDesc": "Pris: Högst först",
+      "newest": "Nyast",
+      "nameAsc": "Namn: A till Ö"
+    },
+    "clearFilters": "Rensa filter"
+  },
+  "cart": {
+    "title": "Varukorg",
+    "empty": "Din varukorg är tom",
+    "continueShopping": "Fortsätt handla",
+    "subtotal": "Delsumma",
+    "total": "Totalt",
+    "checkout": "Gå till kassan",
+    "remove": "Ta bort",
+    "updateQuantity": "Uppdatera antal",
+    "itemAdded": "Produkt tillagd i varukorgen",
+    "itemRemoved": "Produkt borttagen från varukorgen",
+    "items": "{{count}} produkt",
+    "items_other": "{{count}} produkter"
+  },
+  "checkout": {
+    "title": "Kassa",
+    "shippingAddress": "Leveransadress",
+    "billingAddress": "Faktureringsadress",
+    "sameAsShipping": "Samma som leveransadress",
+    "payment": "Betalning",
+    "review": "Granska beställning",
+    "placeOrder": "Beställ",
+    "processing": "Bearbetar...",
+    "orderConfirmed": "Beställning bekräftad!",
+    "orderNumber": "Beställning #{{number}}",
+    "thankYou": "Tack för din beställning",
+    "confirmationEmail": "En bekräftelse har skickats till {{email}}",
+    "continueShopping": "Fortsätt handla",
+    "termsOfService": "Användarvillkor",
+    "privacyPolicy": "Integritetspolicy"
+  },
+  "address": {
+    "fullName": "Fullständigt namn",
+    "addressLine1": "Adressrad 1",
+    "addressLine2": "Adressrad 2",
+    "city": "Stad",
+    "stateProvince": "Län",
+    "postalCode": "Postnummer",
+    "country": "Land",
+    "phone": "Telefonnummer",
+    "division": "Division",
+    "district": "Distrikt",
+    "thana": "Thana",
+    "postort": "Postort",
+    "postnummer": "Postnummer"
+  },
+  "auth": {
+    "login": "Logga in",
+    "register": "Skapa konto",
+    "email": "E-postadress",
+    "password": "Lösenord",
+    "confirmPassword": "Bekräfta lösenord",
+    "forgotPassword": "Glömt lösenord?",
+    "resetPassword": "Återställ lösenord",
+    "sendResetLink": "Skicka återställningslänk",
+    "orContinueWith": "Eller fortsätt med",
+    "google": "Google",
+    "apple": "Apple",
+    "alreadyHaveAccount": "Har du redan ett konto?",
+    "dontHaveAccount": "Har du inget konto?",
+    "verifyEmail": "Kontrollera din e-post för att verifiera ditt konto",
+    "passwordResetSent": "Återställningslänk skickad till din e-post"
+  },
+  "account": {
+    "title": "Mitt konto",
+    "profile": "Profil",
+    "orders": "Beställningshistorik",
+    "addresses": "Sparade adresser",
+    "preferences": "Inställningar",
+    "languagePref": "Språkinställning",
+    "currencyPref": "Valutainställning",
+    "defaultAddress": "Standardadress",
+    "noOrders": "Inga beställningar ännu"
+  },
+  "order": {
+    "status": {
+      "pending_payment": "Väntar på betalning",
+      "payment_confirmed": "Betalning bekräftad",
+      "processing": "Bearbetas",
+      "partially_shipped": "Delvis skickad",
+      "shipped": "Skickad",
+      "delivered": "Levererad",
+      "completed": "Slutförd",
+      "cancelled": "Avbruten",
+      "refunded": "Återbetald",
+      "disputed": "Bestridd"
+    },
+    "details": "Beställningsdetaljer",
+    "date": "Beställningsdatum",
+    "total": "Totalt",
+    "items": "Produkter",
+    "tracking": "Spårning",
+    "invoice": "Ladda ner faktura",
+    "returnRequest": "Begär retur"
+  },
+  "returns": {
+    "title": "Begär en retur",
+    "reason": "Anledning till retur",
+    "reasons": {
+      "defective": "Defekt / Skadad",
+      "wrong_item": "Fel produkt levererad",
+      "not_as_described": "Inte som beskrivet",
+      "changed_mind": "Ångrat mig",
+      "too_late": "Kom för sent",
+      "other": "Annat"
+    },
+    "condition": "Produktens skick",
+    "conditions": {
+      "unopened": "Oöppnad",
+      "opened": "Öppnad — oanvänd",
+      "used": "Använd"
+    },
+    "submit": "Skicka returförfrågan",
+    "submitted": "Returförfrågan skickad",
+    "policy": "Returpolicy",
+    "window": "Produkter kan returneras inom {{days}} dagar efter leverans"
+  },
+  "footer": {
+    "about": "Om oss",
+    "contact": "Kontakt",
+    "shipping": "Fraktinformation",
+    "returns": "Returer & Återbetalningar",
+    "terms": "Användarvillkor",
+    "privacy": "Integritetspolicy",
+    "cookiePolicy": "Cookiepolicy",
+    "allRightsReserved": "Alla rättigheter förbehållna"
+  },
+  "validation": {
+    "required": "Detta fält är obligatoriskt",
+    "invalidEmail": "Ange en giltig e-postadress",
+    "passwordMin": "Lösenordet måste vara minst 8 tecken",
+    "passwordMatch": "Lösenorden matchar inte",
+    "invalidPhone": "Ange ett giltigt telefonnummer",
+    "invalidPostalCode": "Ange ett giltigt postnummer"
+  },
+  "cookie": {
+    "message": "Vi använder cookies för att förbättra din upplevelse. Genom att fortsätta godkänner du vår cookiepolicy.",
+    "accept": "Acceptera",
+    "decline": "Avböj",
+    "settings": "Cookieinställningar"
+  },
+  "seo": {
+    "homeTitle": "Handla online — E-handelsplattformen",
+    "homeDescription": "Utforska vårt sortiment av kvalitetsprodukter. Fri frakt på beställningar över 500 kr.",
+    "productsTitle": "Produkter — E-handelsplattformen",
+    "productsDescription": "Utforska hela vårt produktsortiment"
+  }
+}

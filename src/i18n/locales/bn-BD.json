@@ -1,0 +1,209 @@
+{
+  "common": {
+    "loading": "লোড হচ্ছে...",
+    "error": "কিছু একটা সমস্যা হয়েছে",
+    "retry": "আবার চেষ্টা করুন",
+    "save": "সংরক্ষণ করুন",
+    "cancel": "বাতিল",
+    "delete": "মুছে ফেলুন",
+    "edit": "সম্পাদনা",
+    "close": "বন্ধ করুন",
+    "back": "পেছনে",
+    "next": "পরবর্তী",
+    "search": "অনুসন্ধান",
+    "noResults": "কোনো ফলাফল পাওয়া যায়নি",
+    "viewAll": "সব দেখুন",
+    "learnMore": "আরও জানুন",
+    "currency": "মুদ্রা",
+    "language": "ভাষা"
+  },
+  "nav": {
+    "home": "হোম",
+    "products": "পণ্য",
+    "categories": "বিভাগ",
+    "cart": "কার্ট",
+    "account": "অ্যাকাউন্ট",
+    "orders": "অর্ডার",
+    "wishlist": "ইচ্ছা তালিকা",
+    "login": "লগ ইন",
+    "register": "নিবন্ধন",
+    "logout": "লগ আউট"
+  },
+  "product": {
+    "addToCart": "কার্টে যোগ করুন",
+    "outOfStock": "স্টকে নেই",
+    "inStock": "স্টকে আছে",
+    "stockLeft": "মাত্র {{count}}টি বাকি",
+    "price": "মূল্য",
+    "salePrice": "বিক্রয় মূল্য",
+    "description": "বিবরণ",
+    "reviews": "রিভিউ",
+    "relatedProducts": "সম্পর্কিত পণ্য",
+    "recentlyViewed": "সম্প্রতি দেখা",
+    "variants": "বিকল্প",
+    "quantity": "পরিমাণ",
+    "sku": "SKU"
+  },
+  "search": {
+    "placeholder": "পণ্য অনুসন্ধান করুন...",
+    "results": "{{count}}টি ফলাফল",
+    "results_other": "{{count}}টি ফলাফল",
+    "filters": "ফিল্টার",
+    "sortBy": "সাজান",
+    "sortOptions": {
+      "relevance": "প্রাসঙ্গিকতা",
+      "priceAsc": "মূল্য: কম থেকে বেশি",
+      "priceDesc": "মূল্য: বেশি থেকে কম",
+      "newest": "নতুন",
+      "nameAsc": "নাম: ক থেকে হ"
+    },
+    "clearFilters": "ফিল্টার মুছুন"
+  },
+  "cart": {
+    "title": "শপিং কার্ট",
+    "empty": "আপনার কার্ট খালি",
+    "continueShopping": "কেনাকাটা চালিয়ে যান",
+    "subtotal": "উপমোট",
+    "total": "মোট",
+    "checkout": "চেকআউটে যান",
+    "remove": "সরান",
+    "updateQuantity": "পরিমাণ আপডেট করুন",
+    "itemAdded": "পণ্য কার্টে যোগ হয়েছে",
+    "itemRemoved": "পণ্য কার্ট থেকে সরানো হয়েছে",
+    "items": "{{count}}টি পণ্য",
+    "items_other": "{{count}}টি পণ্য"
+  },
+  "checkout": {
+    "title": "চেকআউট",
+    "shippingAddress": "ডেলিভারি ঠিকানা",
+    "billingAddress": "বিলিং ঠিকানা",
+    "sameAsShipping": "ডেলিভারি ঠিকানার মতোই",
+    "payment": "পেমেন্ট",
+    "review": "অর্ডার পর্যালোচনা",
+    "placeOrder": "অর্ডার করুন",
+    "processing": "প্রক্রিয়াকরণ হচ্ছে...",
+    "orderConfirmed": "অর্ডার নিশ্চিত হয়েছে!",
+    "orderNumber": "অর্ডার নং {{number}}",
+    "thankYou": "আপনার অর্ডারের জন্য ধন্যবাদ",
+    "confirmationEmail": "{{email}} ঠিকানায় একটি নিশ্চিতকরণ ইমেইল পাঠানো হয়েছে",
+    "continueShopping": "কেনাকাটা চালিয়ে যান",
+    "termsOfService": "সেবার শর্তাবলী",
+    "privacyPolicy": "গোপনীয়তা নীতি"
+  },
+  "address": {
+    "fullName": "পুরো নাম",
+    "addressLine1": "ঠিকানা লাইন ১",
+    "addressLine2": "ঠিকানা লাইন ২",
+    "city": "শহর",
+    "stateProvince": "বিভাগ",
+    "postalCode": "পোস্ট কোড",
+    "country": "দেশ",
+    "phone": "ফোন নম্বর",
+    "division": "বিভাগ",
+    "district": "জেলা",
+    "thana": "থানা",
+    "postort": "Postort",
+    "postnummer": "Postnummer"
+  },
+  "auth": {
+    "login": "লগ ইন",
+    "register": "অ্যাকাউন্ট তৈরি করুন",
+    "email": "ইমেইল ঠিকানা",
+    "password": "পাসওয়ার্ড",
+    "confirmPassword": "পাসওয়ার্ড নিশ্চিত করুন",
+    "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+    "resetPassword": "পাসওয়ার্ড রিসেট করুন",
+    "sendResetLink": "রিসেট লিংক পাঠান",
+    "orContinueWith": "অথবা এর মাধ্যমে চালিয়ে যান",
+    "google": "গুগল",
+    "apple": "অ্যাপল",
+    "alreadyHaveAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
+    "dontHaveAccount": "অ্যাকাউন্ট নেই?",
+    "verifyEmail": "আপনার অ্যাকাউন্ট যাচাই করতে ইমেইল চেক করুন",
+    "passwordResetSent": "পাসওয়ার্ড রিসেট লিংক আপনার ইমেইলে পাঠানো হয়েছে"
+  },
+  "account": {
+    "title": "আমার অ্যাকাউন্ট",
+    "profile": "প্রোফাইল",
+    "orders": "অর্ডারের ইতিহাস",
+    "addresses": "সংরক্ষিত ঠিকানা",
+    "preferences": "পছন্দসমূহ",
+    "languagePref": "ভাষার পছন্দ",
+    "currencyPref": "মুদ্রার পছন্দ",
+    "defaultAddress": "ডিফল্ট ঠিকানা",
+    "noOrders": "এখনো কোনো অর্ডার নেই"
+  },
+  "order": {
+    "status": {
+      "pending_payment": "পেমেন্ট অপেক্ষমাণ",
+      "payment_confirmed": "পেমেন্ট নিশ্চিত",
+      "processing": "প্রক্রিয়াধীন",
+      "partially_shipped": "আংশিক পাঠানো হয়েছে",
+      "shipped": "পাঠানো হয়েছে",
+      "delivered": "ডেলিভারি হয়েছে",
+      "completed": "সম্পন্ন",
+      "cancelled": "বাতিল",
+      "refunded": "ফেরত দেওয়া হয়েছে",
+      "disputed": "বিতর্কিত"
+    },
+    "details": "অর্ডারের বিবরণ",
+    "date": "অর্ডারের তারিখ",
+    "total": "মোট",
+    "items": "পণ্যসমূহ",
+    "tracking": "ট্র্যাকিং",
+    "invoice": "ইনভয়েস ডাউনলোড করুন",
+    "returnRequest": "রিটার্নের অনুরোধ করুন"
+  },
+  "returns": {
+    "title": "রিটার্নের অনুরোধ",
+    "reason": "রিটার্নের কারণ",
+    "reasons": {
+      "defective": "ত্রুটিপূর্ণ / ক্ষতিগ্রস্ত",
+      "wrong_item": "ভুল পণ্য পেয়েছি",
+      "not_as_described": "বিবরণ অনুযায়ী নয়",
+      "changed_mind": "মত পরিবর্তন হয়েছে",
+      "too_late": "দেরিতে পৌঁছেছে",
+      "other": "অন্যান্য"
+    },
+    "condition": "পণ্যের অবস্থা",
+    "conditions": {
+      "unopened": "অখোলা",
+      "opened": "খোলা — অব্যবহৃত",
+      "used": "ব্যবহৃত"
+    },
+    "submit": "রিটার্ন অনুরোধ জমা দিন",
+    "submitted": "রিটার্নের অনুরোধ জমা হয়েছে",
+    "policy": "রিটার্ন নীতি",
+    "window": "ডেলিভারির {{days}} দিনের মধ্যে পণ্য ফেরত দেওয়া যাবে"
+  },
+  "footer": {
+    "about": "আমাদের সম্পর্কে",
+    "contact": "যোগাযোগ",
+    "shipping": "শিপিং তথ্য",
+    "returns": "রিটার্ন ও ফেরত",
+    "terms": "সেবার শর্তাবলী",
+    "privacy": "গোপনীয়তা নীতি",
+    "cookiePolicy": "কুকি নীতি",
+    "allRightsReserved": "সর্বস্বত্ব সংরক্ষিত"
+  },
+  "validation": {
+    "required": "এই ক্ষেত্রটি আবশ্যক",
+    "invalidEmail": "অনুগ্রহ করে একটি বৈধ ইমেইল ঠিকানা দিন",
+    "passwordMin": "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে",
+    "passwordMatch": "পাসওয়ার্ড মিলছে না",
+    "invalidPhone": "অনুগ্রহ করে একটি বৈধ ফোন নম্বর দিন",
+    "invalidPostalCode": "অনুগ্রহ করে একটি বৈধ পোস্ট কোড দিন"
+  },
+  "cookie": {
+    "message": "আমরা আপনার অভিজ্ঞতা উন্নত করতে কুকি ব্যবহার করি। চালিয়ে যাওয়ার মাধ্যমে আপনি আমাদের কুকি নীতিতে সম্মত হচ্ছেন।",
+    "accept": "গ্রহণ করুন",
+    "decline": "প্রত্যাখ্যান",
+    "settings": "কুকি সেটিংস"
+  },
+  "seo": {
+    "homeTitle": "অনলাইনে কেনাকাটা করুন — ই-কমার্স প্ল্যাটফর্ম",
+    "homeDescription": "আমাদের মানসম্পন্ন পণ্যের ক্যাটালগ দেখুন।",
+    "productsTitle": "পণ্য — ই-কমার্স প্ল্যাটফর্ম",
+    "productsDescription": "আমাদের সম্পূর্ণ পণ্য ক্যাটালগ দেখুন"
+  }
+}

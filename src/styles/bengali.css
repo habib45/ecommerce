@@ -1,0 +1,19 @@
+/*
+ * BRD §3.2.5 — Bengali typography requirements:
+ * - Noto Sans Bengali loaded conditionally for bn-BD
+ * - line-height min 1.7 for Bangla body text (matra diacritics)
+ * - font-display: swap with Latin fallback
+ */
+.font-bengali {
+  font-family: 'Noto Sans Bengali', Arial, system-ui, sans-serif;
+}
+
+.leading-bengali {
+  line-height: 1.7;
+}
+
+/* Ensure Bengali conjuncts render correctly */
+[lang="bn"] {
+  font-feature-settings: "liga" 1, "clig" 1;
+  -webkit-font-smoothing: antialiased;
+}
