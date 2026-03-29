@@ -106,7 +106,8 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
     );
   }
 
-  const active = images[activeIndex];
+  // images.length > 0 is guaranteed by the early return above
+  const active = (images[activeIndex] ?? images[0])!;
 
   return (
     <>
@@ -218,8 +219,8 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
             onMouseLeave={handleMouseUp}
           >
             <img
-              src={images[lightboxIndex].url}
-              alt={translate(images[lightboxIndex].alt_text, locale) || productName}
+              src={images[lightboxIndex]!.url}
+              alt={translate(images[lightboxIndex]!.alt_text, locale) || productName}
               draggable={false}
               onClick={handleImageClick}
               style={{
