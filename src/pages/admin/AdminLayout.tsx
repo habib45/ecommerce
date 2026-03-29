@@ -35,13 +35,13 @@ export function AdminLayout() {
       <aside className="w-56 bg-gray-900 text-white p-4 flex flex-col">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-lg font-bold">Admin</h1>
-          <Link to="/en" target="_blank" title="Visit Store"
+          {/* <Link to="/en" target="_blank" title="Visit Store"
             className="text-gray-400 hover:text-white">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
-          </Link>
+          </Link> */}
         </div>
         <nav className="space-y-1 flex-1">
           {NAV.map((item) => (
@@ -51,6 +51,17 @@ export function AdminLayout() {
             </Link>
           ))}
         </nav>
+         <div className="flex items-center justify-between mb-8">
+          {/* links visit site and logout */}
+          <Link to="/en" target="_blank" title="Visit Store"
+            className="text-gray-400 hover:text-white">
+           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg> Visit Site
+           
+          </Link>
+         </div>
         <div className="border-t border-gray-700 pt-4 mt-4">
           <p className="text-xs text-gray-400 truncate mb-2">{profile.email}</p>
           <button onClick={handleLogout}

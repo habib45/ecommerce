@@ -95,6 +95,10 @@ export const router = createBrowserRouter([
       { path: 'account/orders/:orderId', element: <OrderDetailPage /> },
       { path: 'account/orders/:orderId/return', element: <ReturnRequestPage /> },
 
+      //admin 
+      { path: 'admin', element: <AdminLayout />, children: [
+        { index: true, element: <AdminDashboard /> },
+      ]},
       // Catch-all
       { path: '*', element: <NotFoundPage /> },
     ],

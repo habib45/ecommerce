@@ -135,7 +135,11 @@ export function AccountPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-gray-900 mb-8">{t('account.title')}</h1>
-
+      {/* if login admin then show this block */}
+      {profile?.role === 'administrator' && (
+        <div className='w-full text-center'>Visit Admin Panel <Link to={`/${locale}/admin`} className="text-blue-600 hover:underline">Dashboard</Link></div>
+      )}
+      <br />
       <div className="space-y-6">
         {/* Quick links */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
