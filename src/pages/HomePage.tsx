@@ -14,7 +14,7 @@ export function HomePage() {
     perPage: 8,
     sortBy: "newest",
   });
-  const { data: featuredProducts, isLoading: featuredLoading } =
+  const { data: featuredProducts } =
     useFeaturedProducts(locale, 8);
 
   return (
@@ -35,7 +35,6 @@ export function HomePage() {
           </h2>
           <ProductCarousel
             products={featuredProducts}
-            loading={featuredLoading}
           />
         </section>
       )}

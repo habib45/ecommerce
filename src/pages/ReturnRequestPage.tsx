@@ -51,7 +51,7 @@ export function ReturnRequestPage() {
     enabled: !!user && !!orderId,
   });
 
-  const toggleItem = (itemId: string, maxQty: number) => {
+  const toggleItem = (itemId: string, _maxQty: number) => {
     setSelected((prev) => {
       if (prev[itemId] !== undefined) {
         const next = { ...prev };

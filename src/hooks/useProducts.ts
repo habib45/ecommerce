@@ -1,4 +1,4 @@
-import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase/client';
 import type { Product, LocaleCode, Category, SearchResult } from '@/types/domain';
 
@@ -191,12 +191,6 @@ export function useProducts({
 // ─── Full-Text Search ─────────────────────────────────────────────
 // BRD §3.1.2 — per-locale tsvector columns
 export function useProductSearch(query: string, locale: LocaleCode) {
-  const vectorColumn = {
-    en: 'search_vector_en',
-    'bn-BD': 'search_vector_bn',
-    sv: 'search_vector_sv',
-  }[locale];
-
   return useQuery({
     queryKey: ['search', query, locale],
     queryFn: async () => {

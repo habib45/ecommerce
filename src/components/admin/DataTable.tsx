@@ -8,7 +8,6 @@ import {
   flexRender,
   type ColumnDef,
   type SortingState,
-  type Row,
 } from "@tanstack/react-table";
 
 interface DataTableProps<T> {

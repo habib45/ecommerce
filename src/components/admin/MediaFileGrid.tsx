@@ -40,7 +40,7 @@ function CopyBtn({ onClick }: { onClick: () => void }) {
   );
 }
 
-function DeleteBtn({ onClick }: { onClick: () => void }) {
+function DeleteBtn({ onClick }: { onClick: React.MouseEventHandler<HTMLButtonElement> }) {
   return (
     <button
       onClick={onClick}
@@ -80,7 +80,7 @@ export function MediaFileGrid({ items, currentPath, onNavigate, onDelete, onCopy
             {item.name}
           </span>
           <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition">
-            <DeleteBtn onClick={(e) => { (e as unknown as MouseEvent).stopPropagation?.(); onDelete(item); }} />
+            <DeleteBtn onClick={(e: React.MouseEvent<HTMLButtonElement>) => { e.stopPropagation(); onDelete(item); }} />
           </div>
         </div>
       ))}

@@ -23,7 +23,7 @@ const BLANK: HeroSlideInsert = {
   title: '',
   description: '',
   image_url: '',
-  bg_overlay: OVERLAY_OPTIONS[0].value,
+  bg_overlay: OVERLAY_OPTIONS[0]?.value || 'from-blue-900/60 to-indigo-900/40',
   cta_label: '',
   cta_href: '',
   show_text: true,

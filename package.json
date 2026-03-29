@@ -30,6 +30,7 @@
     "react-hot-toast": "^2.4.1",
     "react-i18next": "^15.0.0",
     "react-router-dom": "^6.26.0",
+    "serve": "^14.2.6",
     "swiper": "^12.1.2",
     "zustand": "^4.5.5"
   },

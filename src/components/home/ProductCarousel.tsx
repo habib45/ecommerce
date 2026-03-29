@@ -3,14 +3,13 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { ProductCard } from "@/components/product/ProductCard";
-import { Product } from "@/types/Product";
+import type { Product } from "@/types/domain";
 
 interface ProductCarouselProps {
   products: Product[];
-  loading?: boolean;
 }
 
-export function ProductCarousel({ products, loading }: ProductCarouselProps) {
+export function ProductCarousel({ products }: ProductCarouselProps) {
   return (
     <div className="product-carousel">
       <Swiper

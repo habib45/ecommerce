@@ -20,7 +20,7 @@ export function mapLocaleToStripe(locale: LocaleCode): string {
 export function getStripe(locale: LocaleCode = 'en'): Promise<Stripe | null> {
   if (!stripePromise) {
     stripePromise = loadStripe(publishableKey, {
-      locale: mapLocaleToStripe(locale) as 'en' | 'bn' | 'sv',
+      locale: mapLocaleToStripe(locale) as any,
     });
   }
   return stripePromise;

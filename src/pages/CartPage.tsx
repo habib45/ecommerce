@@ -73,7 +73,7 @@ export function CartPage() {
             </div>
           )}
           {items.map((item) => {
-            const product = item.variant?.product;
+            const product = item.product;
             const name = translate(product?.name ?? {}, locale) || `Product #${item.variant_id?.slice(0, 8)}`;
             const variant = item.variant;
             const variantName = variant ? translate(variant.name, locale) : 'Unknown variant';
@@ -82,7 +82,7 @@ export function CartPage() {
               variant?.prices?.[currency] ??
               0;
             const image = product?.images?.sort(
-              (a, b) => a.sort_order - b.sort_order,
+              (a: any, b: any) => a.sort_order - b.sort_order,
             )[0];
 
             console.log(`Item ${item.id}:`, { product, variant, price }); // Debug log

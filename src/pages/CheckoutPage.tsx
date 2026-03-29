@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { useLocale } from '@/hooks/useLocale';
 import { useCartStore } from '@/stores/cartStore';
 import { useAuthStore } from '@/stores/authStore';
-import { useShippingAddresses, type SavedAddress } from '@/hooks/useShippingAddresses';
+import { useShippingAddresses } from '@/hooks/useShippingAddresses';
 import { AddressForm } from '@/components/checkout/AddressForm';
 import { StripePayment } from '@/components/checkout/StripePayment';
 import { callEdgeFunction } from '@/lib/supabase/client';

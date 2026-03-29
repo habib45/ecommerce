@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { getStripe } from '@/lib/stripe/client';
 import { callEdgeFunction } from '@/lib/supabase/client';
 import { useLocale } from '@/hooks/useLocale';
-import type { LocaleCode } from '@/types/domain';
 
 interface StripePaymentProps {
   cartId: string;
