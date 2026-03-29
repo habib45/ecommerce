@@ -53,7 +53,7 @@ export function AdminLayout() {
         </nav>
          <div className="flex items-center justify-between mb-8">
           {/* links visit site and logout */}
-          <Link to="/en" target="_blank" title="Visit Store"
+          <Link to="/en" title="Visit Store"
             className="text-gray-400 hover:text-white">
            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
