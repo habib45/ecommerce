@@ -34,7 +34,7 @@ export function CartPage() {
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 text-center">
-        <div className="animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full mx-auto" />
+        <div className="animate-spin w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full mx-auto" />
       </div>
     );
   }
@@ -48,7 +48,7 @@ export function CartPage() {
         <p className="text-gray-500 mb-6">{t("cart.empty")}</p>
         <Link
           to={`/${locale}/products`}
-          className="text-blue-600 hover:underline"
+          className="text-primary-600 hover:underline"
         >
           {t("cart.continueShopping")}
         </Link>
@@ -188,11 +188,11 @@ export function CartPage() {
           </div>
 
           {/* Payable Total */}
-          <div className="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-200">
+          <div className="bg-primary-50 p-4 rounded-lg mb-6 border border-primary-200">
             <p className="text-xs text-gray-600 mb-1">
               {t("checkout.payableTotal") || "Payable Total"}
             </p>
-            <p className="text-2xl font-bold text-blue-600">
+            <p className="text-2xl font-bold text-primary-600">
               {formatPrice(total, currency, locale)}
             </p>
           </div>
@@ -200,7 +200,7 @@ export function CartPage() {
           {/* Checkout Button */}
           <Link
             to={`/${locale}/checkout`}
-            className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-medium hover:bg-blue-700 mb-3 transition-colors"
+            className="block w-full bg-primary-600 text-white text-center py-3 rounded-lg font-medium hover:bg-primary-700 mb-3 transition-colors"
           >
             {t("cart.checkout")}
           </Link>

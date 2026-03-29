@@ -40,7 +40,7 @@ export function LoginPage() {
         <input type="password" placeholder={t('auth.password')} value={password} onChange={(e) => setPassword(e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg" required />
         <button type="submit" disabled={loading}
-          className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50">
+          className="w-full bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700 disabled:opacity-50">
           {loading ? t('common.loading') : t('auth.login')}
         </button>
       </form>
@@ -52,10 +52,10 @@ export function LoginPage() {
         </div>
       </div>
       <div className="mt-6 text-center text-sm">
-        <Link to={`/${locale}/reset-password`} className="text-blue-600 hover:underline">{t('auth.forgotPassword')}</Link>
+        <Link to={`/${locale}/reset-password`} className="text-primary-600 hover:underline">{t('auth.forgotPassword')}</Link>
         <p className="mt-2 text-gray-500">
           {t('auth.dontHaveAccount')}{' '}
-          <Link to={`/${locale}/register`} className="text-blue-600 hover:underline">{t('auth.register')}</Link>
+          <Link to={`/${locale}/register`} className="text-primary-600 hover:underline">{t('auth.register')}</Link>
         </p>
       </div>
     </div>

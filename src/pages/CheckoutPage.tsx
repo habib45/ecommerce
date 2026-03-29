@@ -77,11 +77,11 @@ export function CheckoutPage() {
 
         {/* Steps */}
         <div className="flex items-center gap-4 mb-8">
-          <span className={`text-sm font-medium ${step === 'address' ? 'text-blue-600' : 'text-gray-400'}`}>
+          <span className={`text-sm font-medium ${step === 'address' ? 'text-primary-600' : 'text-gray-400'}`}>
             1. {t('checkout.shippingAddress')}
           </span>
           <span className="text-gray-300">→</span>
-          <span className={`text-sm font-medium ${step === 'payment' ? 'text-blue-600' : 'text-gray-400'}`}>
+          <span className={`text-sm font-medium ${step === 'payment' ? 'text-primary-600' : 'text-gray-400'}`}>
             2. {t('checkout.payment')}
           </span>
         </div>
@@ -97,19 +97,19 @@ export function CheckoutPage() {
                   <label key={addr.id}
                     className={`flex items-start gap-3 p-4 border rounded-lg cursor-pointer transition-colors ${
                       selectedAddressId === addr.id
-                        ? 'border-blue-500 bg-blue-50'
+                        ? 'border-primary-500 bg-primary-50'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}>
                     <input type="radio" name="address" value={addr.id}
                       checked={selectedAddressId === addr.id}
                       onChange={() => setSelectedAddressId(addr.id)}
-                      className="mt-1 text-blue-600" />
+                      className="mt-1 text-primary-600" />
                     <div className="flex-1 text-sm">
                       <div className="flex items-center gap-2">
                         <span className="font-semibold text-gray-900">{addr.full_name}</span>
                         <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">{addr.label}</span>
                         {addr.is_default && (
-                          <span className="text-xs text-blue-600 bg-blue-100 px-2 py-0.5 rounded">Default</span>
+                          <span className="text-xs text-primary-600 bg-primary-100 px-2 py-0.5 rounded">Default</span>
                         )}
                       </div>
                       <p className="text-gray-500 mt-0.5">{addr.phone}</p>
@@ -123,12 +123,12 @@ export function CheckoutPage() {
 
                 {/* Use a new address option */}
                 <label className={`flex items-start gap-3 p-4 border rounded-lg cursor-pointer transition-colors ${
-                  selectedAddressId === 'new' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
+                  selectedAddressId === 'new' ? 'border-primary-500 bg-primary-50' : 'border-gray-200 hover:border-gray-300'
                 }`}>
                   <input type="radio" name="address" value="new"
                     checked={selectedAddressId === 'new'}
                     onChange={() => setSelectedAddressId('new')}
-                    className="mt-1 text-blue-600" />
+                    className="mt-1 text-primary-600" />
                   <span className="text-sm font-medium text-gray-700">Use a different address</span>
                 </label>
               </div>
@@ -144,7 +144,7 @@ export function CheckoutPage() {
                     <label className="flex items-center gap-2 cursor-pointer select-none">
                       <input type="checkbox" checked={saveNewAddress}
                         onChange={(e) => setSaveNewAddress(e.target.checked)}
-                        className="w-4 h-4 rounded border-gray-300 text-blue-600" />
+                        className="w-4 h-4 rounded border-gray-300 text-primary-600" />
                       <span className="text-sm text-gray-600">Save this address to my account</span>
                     </label>
                     {saveNewAddress && (
@@ -153,7 +153,7 @@ export function CheckoutPage() {
                           <button key={l} onClick={() => setNewAddressLabel(l)}
                             className={`px-3 py-1 rounded-full text-xs font-medium border ${
                               newAddressLabel === l
-                                ? 'bg-blue-600 text-white border-blue-600'
+                                ? 'bg-primary-600 text-white border-primary-600'
                                 : 'bg-white text-gray-600 border-gray-300'
                             }`}>
                             {l}
@@ -167,7 +167,7 @@ export function CheckoutPage() {
             )}
 
             <button onClick={handleContinueToPayment}
-              className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700">
+              className="mt-6 w-full bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700">
               {t('common.next')}
             </button>
           </div>
@@ -187,7 +187,7 @@ export function CheckoutPage() {
                     </p>
                   </div>
                   <button onClick={() => setStep('address')}
-                    className="text-blue-600 text-xs hover:underline shrink-0 ml-4">
+                    className="text-primary-600 text-xs hover:underline shrink-0 ml-4">
                     Change
                   </button>
                 </div>

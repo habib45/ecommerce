@@ -140,7 +140,7 @@ export function AdminCategoryEditor() {
           )}
           <button
             onClick={handleSave}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700"
+            className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-700"
           >
             {isNew ? "Create Category" : "Save Changes"}
           </button>
@@ -202,7 +202,7 @@ export function AdminCategoryEditor() {
               onClick={() => setActiveTab(locale)}
               className={`px-3 py-1.5 rounded text-sm font-medium ${
                 activeTab === locale
-                  ? "bg-blue-600 text-white"
+                  ? "bg-primary-600 text-white"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >

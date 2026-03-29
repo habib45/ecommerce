@@ -44,7 +44,7 @@ export function LanguageSwitcher() {
               key={code}
               onClick={() => { switchLocale(code); setOpen(false); }}
               className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 ${
-                code === locale ? 'font-semibold text-blue-600' : 'text-gray-700'
+                code === locale ? 'font-semibold text-primary-600' : 'text-gray-700'
               }`}
             >
               {LOCALE_LABELS[code]}

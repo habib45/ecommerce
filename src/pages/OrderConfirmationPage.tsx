@@ -17,7 +17,7 @@ export function OrderConfirmationPage() {
       <h1 className="text-3xl font-bold text-gray-900 mb-2">{t('checkout.orderConfirmed')}</h1>
       <p className="text-gray-600 mb-2">{t('checkout.thankYou')}</p>
       <p className="text-sm text-gray-500 mb-8">{t('checkout.orderNumber', { number: orderId?.slice(0, 8) })}</p>
-      <Link to={`/${locale}/products`} className="text-blue-600 hover:underline">{t('checkout.continueShopping')}</Link>
+      <Link to={`/${locale}/products`} className="text-primary-600 hover:underline">{t('checkout.continueShopping')}</Link>
     </div>
   );
 }

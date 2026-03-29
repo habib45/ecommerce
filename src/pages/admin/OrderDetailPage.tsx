@@ -27,7 +27,7 @@ function statusColor(status: string) {
     case "shipped":
     case "partially_shipped":
     case "payment_confirmed":
-      return "bg-blue-100 text-blue-800";
+      return "bg-primary-100 text-primary-800";
     case "pending_payment":
       return "bg-yellow-100 text-yellow-800";
     case "cancelled":
@@ -120,7 +120,7 @@ export function AdminOrderDetail() {
           <select
             value={order.status}
             onChange={(e) => updateStatus.mutate(e.target.value as OrderStatus)}
-            className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             {STATUS_OPTIONS.map((s) => (
               <option key={s} value={s}>{s.replace(/_/g, " ")}</option>

@@ -150,12 +150,12 @@ export function ReturnRequestPage() {
               const isChecked = selected[item.id] !== undefined;
 
               return (
-                <div key={item.id} className={`flex items-center gap-4 px-4 py-3 ${isChecked ? 'bg-blue-50' : ''}`}>
+                <div key={item.id} className={`flex items-center gap-4 px-4 py-3 ${isChecked ? 'bg-primary-50' : ''}`}>
                   <input
                     type="checkbox"
                     checked={isChecked}
                     onChange={() => toggleItem(item.id, item.quantity)}
-                    className="w-4 h-4 rounded border-gray-300 text-blue-600"
+                    className="w-4 h-4 rounded border-gray-300 text-primary-600"
                   />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-sm text-gray-900 truncate">{name}</p>
@@ -191,7 +191,7 @@ export function ReturnRequestPage() {
             value={reasonCode}
             onChange={(e) => setReasonCode(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
             <option value="">Select a reason…</option>
             {REASON_CODES.map((r) => (
@@ -203,7 +203,7 @@ export function ReturnRequestPage() {
             onChange={(e) => setReasonDetail(e.target.value)}
             placeholder="Additional details (optional)…"
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
           />
         </div>
 

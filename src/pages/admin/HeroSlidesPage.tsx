@@ -10,7 +10,7 @@ import {
 } from '@/hooks/useHeroSlides';
 
 const OVERLAY_OPTIONS = [
-  { label: 'Dark Blue',   value: 'from-blue-900/60 to-blue-900/40' },
+  { label: 'Dark Blue',   value: 'from-primary-900/60 to-primary-900/40' },
   { label: 'Dark Purple', value: 'from-purple-900/60 to-indigo-900/40' },
   { label: 'Dark Pink',   value: 'from-pink-900/60 to-rose-900/40' },
   { label: 'Dark Green',  value: 'from-green-900/60 to-emerald-900/40' },
@@ -23,7 +23,7 @@ const BLANK: HeroSlideInsert = {
   title: '',
   description: '',
   image_url: '',
-  bg_overlay: OVERLAY_OPTIONS[0]?.value || 'from-blue-900/60 to-indigo-900/40',
+  bg_overlay: OVERLAY_OPTIONS[0]?.value || 'from-primary-900/60 to-indigo-900/40',
   cta_label: '',
   cta_href: '',
   show_text: true,
@@ -57,7 +57,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
           value={form.image_url}
           onChange={(e) => set('image_url', e.target.value)}
           placeholder="https://example.com/banner.jpg"
-          className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
           required
         />
         {form.image_url && (
@@ -78,7 +78,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
           value={form.title ?? ''}
           onChange={(e) => set('title', e.target.value)}
           placeholder="Welcome to Our Store"
-          className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
         />
       </div>
 
@@ -90,7 +90,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
           value={form.description ?? ''}
           onChange={(e) => set('description', e.target.value)}
           placeholder="Discover our exclusive collection..."
-          className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
         />
       </div>
 
@@ -103,7 +103,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
             value={form.cta_label ?? ''}
             onChange={(e) => set('cta_label', e.target.value)}
             placeholder="Shop Now"
-            className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
           />
         </div>
         <div>
@@ -113,7 +113,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
             value={form.cta_href ?? ''}
             onChange={(e) => set('cta_href', e.target.value)}
             placeholder="/en/products"
-            className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
           />
         </div>
       </div>
@@ -125,7 +125,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
           <select
             value={form.bg_overlay}
             onChange={(e) => set('bg_overlay', e.target.value)}
-            className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
           >
             {OVERLAY_OPTIONS.map((o) => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -141,7 +141,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
             step={10}
             value={form.height_px}
             onChange={(e) => set('height_px', Number(e.target.value))}
-            className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
           />
         </div>
       </div>
@@ -154,7 +154,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
           min={0}
           value={form.sort_order}
           onChange={(e) => set('sort_order', Number(e.target.value))}
-          className="w-32 border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-32 border rounded px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
         />
         <p className="text-xs text-gray-500 mt-1">Lower numbers appear first.</p>
       </div>
@@ -183,7 +183,7 @@ function SlideForm({ initial, onSave, onCancel, saving, submitLabel }: SlideForm
         <button
           onClick={() => onSave(form)}
           disabled={saving || !form.image_url}
-          className="px-5 py-2 bg-blue-600 text-white rounded text-sm font-medium hover:bg-blue-700 disabled:opacity-50 transition"
+          className="px-5 py-2 bg-primary-600 text-white rounded text-sm font-medium hover:bg-primary-700 disabled:opacity-50 transition"
         >
           {saving ? 'Saving…' : submitLabel}
         </button>
@@ -215,7 +215,7 @@ function Toggle({
         aria-checked={checked}
         onClick={() => onChange(!checked)}
         className={`relative w-10 h-5 rounded-full transition-colors ${
-          checked ? 'bg-blue-600' : 'bg-gray-300'
+          checked ? 'bg-primary-600' : 'bg-gray-300'
         }`}
       >
         <span
@@ -288,7 +288,7 @@ export function AdminHeroSlides() {
         {!showAddForm && (
           <button
             onClick={() => setShowAddForm(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded text-sm font-medium hover:bg-blue-700 transition"
+            className="px-4 py-2 bg-primary-600 text-white rounded text-sm font-medium hover:bg-primary-700 transition"
           >
             + Add Slide
           </button>
@@ -438,7 +438,7 @@ function QuickToggle({
         type="button"
         onClick={onChange}
         className={`w-8 h-4 rounded-full transition-colors relative ${
-          checked ? 'bg-blue-500' : 'bg-gray-300'
+          checked ? 'bg-primary-500' : 'bg-gray-300'
         }`}
       >
         <span

@@ -27,9 +27,12 @@
     "wishlist": "Wishlist",
     "login": "Log in",
     "register": "Sign up",
-    "logout": "Log out"
+    "logout": "Log out",
+    "contact": "Contact",
+    "about": "About"
   },
   "product": {
+    "featured": "Featured",
     "addToCart": "Add to cart",
     "outOfStock": "Out of stock",
     "inStock": "In stock",
@@ -42,7 +45,20 @@
     "recentlyViewed": "Recently viewed",
     "variants": "Options",
     "quantity": "Quantity",
-    "sku": "SKU"
+    "sku": "SKU",
+    "brand": "Brand",
+    "model": "Model",
+    "weight": "Weight",
+    "dimensions": "Dimensions",
+    "color": "Color",
+    "size": "Size",
+    "material": "Material",
+    "features": "Features",
+    "specifications": "Specifications",
+    "customerReviews": "Customer reviews",
+    "writeReview": "Write a review",
+    "averageRating": "{{rating}} out of 5",
+    "noReviews": "No reviews yet"
   },
   "search": {
     "placeholder": "Search products...",

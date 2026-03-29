@@ -82,7 +82,7 @@ export function DataTable<T>({
                 placeholder={searchPlaceholder}
                 value={searchVal}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-8 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-9 pr-8 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               {searchVal && (
                 <button
@@ -174,7 +174,7 @@ export function DataTable<T>({
                     onClick={() => table.setPageIndex(i)}
                     className={`w-8 h-8 rounded border text-xs font-medium ${
                       i === table.getState().pagination.pageIndex
-                        ? "bg-blue-600 text-white border-blue-600"
+                        ? "bg-primary-600 text-white border-primary-600"
                         : "border-gray-300 text-gray-600 hover:bg-gray-100"
                     }`}
                   >

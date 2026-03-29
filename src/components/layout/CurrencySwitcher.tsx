@@ -50,7 +50,7 @@ export function CurrencySwitcher() {
               key={c.code}
               onClick={() => handleChange(c.code)}
               className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 ${
-                c.code === currency ? 'font-semibold text-blue-600' : 'text-gray-700'
+                c.code === currency ? 'font-semibold text-primary-600' : 'text-gray-700'
               }`}
             >
               {c.symbol} {c.label}

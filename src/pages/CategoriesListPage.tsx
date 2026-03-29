@@ -64,9 +64,9 @@ export function CategoriesListPage() {
               <div key={cat.id} className="group">
                 <Link
                   to={`/${locale}/categories/${slug}`}
-                  className="block bg-white border rounded-xl p-5 hover:border-blue-400 hover:shadow-md transition-all"
+                  className="block bg-white border rounded-xl p-5 hover:border-primary-400 hover:shadow-md transition-all"
                 >
-                  <h2 className="font-semibold text-gray-900 group-hover:text-blue-600 mb-1">
+                  <h2 className="font-semibold text-gray-900 group-hover:text-primary-600 mb-1">
                     {name}
                   </h2>
                   {desc && (
@@ -86,7 +86,7 @@ export function CategoriesListPage() {
                         <li key={child.id}>
                           <Link
                             to={`/${locale}/categories/${childSlug}`}
-                            className="text-sm text-gray-500 hover:text-blue-600 hover:underline"
+                            className="text-sm text-gray-500 hover:text-primary-600 hover:underline"
                           >
                             {tr(child.name as TranslationMap, locale)}
                           </Link>

@@ -88,7 +88,7 @@ function CategoriesDropdown() {
                 key={cat.id}
                 to={`/${locale}/categories/${slug}`}
                 onClick={() => setOpen(false)}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary-600"
               >
                 {tr(cat.name as TranslationMap, locale)}
               </Link>
@@ -176,7 +176,7 @@ export function Header() {
                 />
               </svg>
               {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-primary-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {itemCount}
                 </span>
               )}

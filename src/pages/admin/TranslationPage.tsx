@@ -15,7 +15,7 @@ export function AdminTranslations() {
       <div className="flex gap-4 mb-6">
         {LOCALE_CODES.filter((c) => c !== 'en').map((code) => (
           <button key={code} onClick={() => setActiveLocale(code)}
-            className={`px-4 py-2 rounded-lg text-sm ${activeLocale === code ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}`}>
+            className={`px-4 py-2 rounded-lg text-sm ${activeLocale === code ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700'}`}>
             {code === 'bn-BD' ? 'Bangla' : 'Swedish'}
           </button>
         ))}

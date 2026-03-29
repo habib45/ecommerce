@@ -69,7 +69,7 @@ function CreateCustomerModal({ onClose, onCreated }: { onClose: () => void; onCr
             <label className="block text-xs font-medium text-gray-600 mb-1">Full Name</label>
             <input type="text" placeholder="John Doe" value={form.full_name}
               onChange={(e) => update("full_name", e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500" />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-600 mb-1">
@@ -77,7 +77,7 @@ function CreateCustomerModal({ onClose, onCreated }: { onClose: () => void; onCr
             </label>
             <input type="email" placeholder="customer@example.com" value={form.email}
               onChange={(e) => update("email", e.target.value)} required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500" />
           </div>
           <div>
             <label className="block text-xs font-medium text-gray-600 mb-1">
@@ -87,7 +87,7 @@ function CreateCustomerModal({ onClose, onCreated }: { onClose: () => void; onCr
               <input type={showPassword ? "text" : "password"} placeholder="Min. 8 characters"
                 value={form.password} onChange={(e) => update("password", e.target.value)}
                 required minLength={8}
-                className="w-full px-3 py-2 pr-14 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                className="w-full px-3 py-2 pr-14 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500" />
               <button type="button" onClick={() => setShowPassword((s) => !s)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 hover:text-gray-600">
                 {showPassword ? "Hide" : "Show"}
@@ -97,7 +97,7 @@ function CreateCustomerModal({ onClose, onCreated }: { onClose: () => void; onCr
           <div>
             <label className="block text-xs font-medium text-gray-600 mb-1">Role</label>
             <select value={form.role} onChange={(e) => update("role", e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500">
               {ROLES.map((r) => (
                 <option key={r} value={r}>{r.replace(/_/g, " ")}</option>
               ))}
@@ -108,7 +108,7 @@ function CreateCustomerModal({ onClose, onCreated }: { onClose: () => void; onCr
           </p>
           <div className="flex gap-3 pt-2 border-t">
             <button type="submit" disabled={saving}
-              className="flex-1 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50">
+              className="flex-1 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 disabled:opacity-50">
               {saving ? "Creating…" : "Create Account"}
             </button>
             <button type="button" onClick={onClose}
@@ -168,7 +168,7 @@ export function AdminCustomers() {
         const c = info.row.original;
         return (
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold shrink-0">
+            <div className="w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-xs font-bold shrink-0">
               {(c.full_name || c.email || "?")[0]!.toUpperCase()}
             </div>
             <span className="font-medium text-gray-900">
@@ -239,7 +239,7 @@ export function AdminCustomers() {
           <p className="text-sm text-gray-500 mt-1">{total} total customers</p>
         </div>
         <button onClick={() => setShowCreate(true)}
-          className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700">
+          className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700">
           + Create Account
         </button>
       </div>
@@ -271,7 +271,7 @@ export function AdminCustomers() {
               .map((i) => (
                 <button key={i} onClick={() => setPage(i)}
                   className={`w-8 h-8 rounded border text-xs font-medium ${
-                    i === page ? "bg-blue-600 text-white border-blue-600" : "border-gray-300 text-gray-600 hover:bg-gray-100"
+                    i === page ? "bg-primary-600 text-white border-primary-600" : "border-gray-300 text-gray-600 hover:bg-gray-100"
                   }`}>
                   {i + 1}
                 </button>

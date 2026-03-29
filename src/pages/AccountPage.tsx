@@ -31,9 +31,9 @@ function AddressCard({
   settingDefault: boolean;
 }) {
   return (
-    <div className={`relative border rounded-lg p-4 text-sm ${address.is_default ? 'border-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}>
+    <div className={`relative border rounded-lg p-4 text-sm ${address.is_default ? 'border-primary-500 bg-primary-50' : 'border-gray-200 bg-white'}`}>
       {address.is_default && (
-        <span className="absolute top-3 right-3 text-xs font-medium text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">
+        <span className="absolute top-3 right-3 text-xs font-medium text-primary-600 bg-primary-100 px-2 py-0.5 rounded-full">
           Default
         </span>
       )}
@@ -49,7 +49,7 @@ function AddressCard({
         {address.country && <p>{address.country}</p>}
       </div>
       <div className="flex items-center gap-3 mt-4 pt-3 border-t border-gray-100">
-        <button onClick={onEdit} className="text-xs text-blue-600 hover:underline font-medium">Edit</button>
+        <button onClick={onEdit} className="text-xs text-primary-600 hover:underline font-medium">Edit</button>
         {!address.is_default && (
           <button onClick={onSetDefault} disabled={settingDefault}
             className="text-xs text-gray-500 hover:text-gray-700 hover:underline">
@@ -137,7 +137,7 @@ export function AccountPage() {
       <h1 className="text-2xl font-bold text-gray-900 mb-8">{t('account.title')}</h1>
       {/* if login admin then show this block */}
       {profile?.role === 'administrator' && (
-        <div className='w-full text-center'>Visit Admin Panel <Link to={`/${locale}/admin`} className="text-blue-600 hover:underline">Dashboard</Link></div>
+        <div className='w-full text-center'>Visit Admin Panel <Link to={`/${locale}/admin`} className="text-primary-600 hover:underline">Dashboard</Link></div>
       )}
       <br />
       <div className="space-y-6">
@@ -164,7 +164,7 @@ export function AccountPage() {
             </div>
             {!editing && (
               <button onClick={openAdd}
-                className="text-sm bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 font-medium">
+                className="text-sm bg-primary-600 text-white px-3 py-1.5 rounded-lg hover:bg-primary-700 font-medium">
                 + Add address
               </button>
             )}
@@ -173,7 +173,7 @@ export function AccountPage() {
           <div className="px-6 py-5">
             {/* Add / Edit form */}
             {editing && (
-              <div className="mb-6 p-5 border border-blue-200 bg-blue-50 rounded-lg">
+              <div className="mb-6 p-5 border border-primary-200 bg-primary-50 rounded-lg">
                 <h3 className="font-semibold text-gray-900 mb-4">
                   {editing.mode === 'add' ? 'New Address' : 'Edit Address'}
                 </h3>
@@ -185,7 +185,7 @@ export function AccountPage() {
                     {LABELS.map((l) => (
                       <button key={l} onClick={() => setLabel(l)}
                         className={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${
-                          label === l ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-600 border-gray-300'
+                          label === l ? 'bg-primary-600 text-white border-primary-600' : 'bg-white text-gray-600 border-gray-300'
                         }`}>
                         {l}
                       </button>
@@ -195,7 +195,7 @@ export function AccountPage() {
                       placeholder="Custom…"
                       value={LABELS.includes(label) ? '' : label}
                       onChange={(e) => setLabel(e.target.value || 'Home')}
-                      className="px-3 py-1 text-xs border border-gray-300 rounded-full w-24 focus:outline-none focus:ring-1 focus:ring-blue-400"
+                      className="px-3 py-1 text-xs border border-gray-300 rounded-full w-24 focus:outline-none focus:ring-1 focus:ring-primary-400"
                     />
                   </div>
                 </div>
@@ -204,13 +204,13 @@ export function AccountPage() {
 
                 <label className="flex items-center gap-2 mt-4 cursor-pointer select-none">
                   <input type="checkbox" checked={isDefault} onChange={(e) => setIsDefault(e.target.checked)}
-                    className="w-4 h-4 rounded border-gray-300 text-blue-600" />
+                    className="w-4 h-4 rounded border-gray-300 text-primary-600" />
                   <span className="text-sm text-gray-600">Set as default address</span>
                 </label>
 
                 <div className="flex gap-3 mt-5">
                   <button onClick={handleSave} disabled={isSaving}
-                    className="px-5 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50">
+                    className="px-5 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 disabled:opacity-50">
                     {isSaving ? 'Saving…' : editing.mode === 'add' ? 'Add Address' : 'Save Changes'}
                   </button>
                   <button onClick={() => setEditing(null)}
@@ -227,7 +227,7 @@ export function AccountPage() {
             ) : addresses.length === 0 && !editing ? (
               <div className="text-sm text-gray-400 py-6 text-center border-2 border-dashed border-gray-200 rounded-lg">
                 No saved addresses yet.{' '}
-                <button onClick={openAdd} className="text-blue-600 hover:underline">Add one now</button>
+                <button onClick={openAdd} className="text-primary-600 hover:underline">Add one now</button>
                 {' '}to speed up checkout.
               </div>
             ) : (

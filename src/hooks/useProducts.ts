@@ -102,22 +102,34 @@ export function useProducts({
   return useQuery({
     queryKey: ['products', locale, categorySlug, searchQuery, page, perPage, sortBy],
     queryFn: async () => {
-      // If filtering by category, use the dedicated RPC function
+      // If filtering by category, resolve the category id first then query with image join
       if (categorySlug) {
-        const offset = (page - 1) * perPage;
-        const { data, error } = await supabase
-          .rpc('get_products_by_category_slug', {
-            p_category_slug: categorySlug,
-            p_locale: locale,
-            p_limit: perPage,
-            p_offset: offset,
-          });
+        const { data: cat, error: catError } = await supabase
+          .from('categories')
+          .select('id')
+          .eq(`slug->>${locale}`, categorySlug)
+          .eq('is_active', true)
+          .single();
+
+        if (catError) throw catError;
+
+        const from = (page - 1) * perPage;
+        const { data, error, count } = await supabase
+          .from('products')
+          .select(`
+            id, name, slug, short_description, meta_title, is_active, created_at,
+            variants:product_variants(id, prices, sale_prices, stock_quantity),
+            images:product_images(url, alt_text, sort_order),
+            category:categories(id, name, slug)
+          `, { count: 'exact' })
+          .eq('is_active', true)
+          .eq('category_id', cat.id)
+          .order('created_at', { ascending: false })
+          .range(from, from + perPage - 1);
 
         if (error) throw error;
 
-        // Extract total count from first row
-        const total = data && data.length > 0 ? (data[0] as any).total_count : 0;
-
+        const total = count ?? 0;
         return {
           data: (data ?? []) as unknown as Product[],
           total,

@@ -12,7 +12,7 @@ const RETURNABLE_STATUSES = ['delivered', 'completed'];
 function statusBadge(status: string) {
   switch (status) {
     case 'payment_confirmed':
-    case 'processing':      return 'bg-blue-100 text-blue-700';
+    case 'processing':      return 'bg-primary-100 text-primary-700';
     case 'shipped':
     case 'partially_shipped': return 'bg-yellow-100 text-yellow-700';
     case 'delivered':
@@ -70,7 +70,7 @@ export function OrderDetailPage() {
     return (
       <div className="max-w-3xl mx-auto px-4 py-8">
         <p className="text-gray-500">Order not found.</p>
-        <Link to={`/${locale}/account/orders`} className="text-blue-600 hover:underline text-sm mt-2 inline-block">
+        <Link to={`/${locale}/account/orders`} className="text-primary-600 hover:underline text-sm mt-2 inline-block">
           ← Back to orders
         </Link>
       </div>

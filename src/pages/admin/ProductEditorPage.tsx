@@ -338,7 +338,7 @@ export function AdminProductEditor() {
             onClick={() => setActiveTab(code)}
             className={`px-4 py-2 text-sm font-medium border-b-2 ${
               activeTab === code
-                ? "border-blue-600 text-blue-600"
+                ? "border-primary-600 text-primary-600"
                 : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -533,10 +533,10 @@ export function AdminProductEditor() {
             setDragOver(false);
             Array.from(e.dataTransfer.files).forEach(uploadImageFile);
           }}
-          className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${dragOver ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}`}
+          className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${dragOver ? 'border-primary-500 bg-primary-50' : 'border-gray-300'}`}
         >
           <p className="text-sm text-gray-500 mb-2">Drag & drop images here, or</p>
-          <label className={`inline-block cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 ${uploadingImage ? 'opacity-50 cursor-wait' : ''}`}>
+          <label className={`inline-block cursor-pointer bg-primary-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-700 ${uploadingImage ? 'opacity-50 cursor-wait' : ''}`}>
             {uploadingImage ? 'Uploading…' : 'Choose Files'}
             <input
               type="file"
@@ -574,7 +574,7 @@ export function AdminProductEditor() {
               <div key={idx} className="relative bg-gray-100 rounded-lg overflow-hidden group">
                 <img src={img.url} alt="Product" className="w-full h-32 object-cover" />
                 {idx === 0 && (
-                  <span className="absolute bottom-0 left-0 right-0 bg-blue-600 text-white text-xs text-center py-0.5">
+                  <span className="absolute bottom-0 left-0 right-0 bg-primary-600 text-white text-xs text-center py-0.5">
                     Main image
                   </span>
                 )}
@@ -615,7 +615,7 @@ export function AdminProductEditor() {
           </h2>
           <button
             onClick={() => setShowVariantForm(!showVariantForm)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700"
+            className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-700"
           >
             {showVariantForm ? "Cancel" : "Add Variant"}
           </button>
@@ -780,7 +780,7 @@ export function AdminProductEditor() {
       <div className="flex gap-4">
         <button
           onClick={handleSave}
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700"
+          className="bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700"
         >
           {isNew ? "Create Product" : "Save Changes"}
         </button>

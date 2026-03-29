@@ -14,7 +14,7 @@ function statusColor(status: string) {
     case "processing":
     case "shipped":
     case "partially_shipped":
-    case "payment_confirmed": return "bg-blue-100 text-blue-700";
+    case "payment_confirmed": return "bg-primary-100 text-primary-700";
     case "pending_payment":   return "bg-yellow-100 text-yellow-700";
     case "cancelled":
     case "refunded":

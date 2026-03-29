@@ -27,7 +27,7 @@ export function AdminCategories() {
         <h1 className="text-2xl font-bold text-gray-900">Categories</h1>
         <Link
           to="/admin/categories/new"
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700"
+          className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-primary-700"
         >
           Add Category
         </Link>
@@ -64,7 +64,7 @@ export function AdminCategories() {
                   <td className="px-4 py-3 text-right">
                     <Link
                       to={`/admin/categories/${c.id}`}
-                      className="text-blue-600 hover:underline"
+                      className="text-primary-600 hover:underline"
                     >
                       Edit
                     </Link>

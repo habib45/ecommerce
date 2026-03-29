@@ -8,6 +8,7 @@ import { t as translate } from '@/lib/translate';
 import { formatPrice } from '@/lib/format';
 import { useCartStore } from '@/stores/cartStore';
 import { ProductGrid } from '@/components/product/ProductGrid';
+import { ProductImageGallery } from '@/components/product/ProductImageGallery';
 import toast from 'react-hot-toast';
 
 export function ProductDetailPage() {
@@ -35,7 +36,7 @@ export function ProductDetailPage() {
   const salePrice = variant?.sale_prices?.[currency];
   const inStock = (variant?.stock_quantity ?? 0) > 0;
   const inCart = variant ? cartItems.some((i) => i.variant_id === variant.id) : false;
-  const images = product.images?.sort((a, b) => a.sort_order - b.sort_order) ?? [];
+  const images = [...(product.images ?? [])].sort((a, b) => a.sort_order - b.sort_order);
 
   const handleAddToCart = async () => {
     if (!variant || adding || inCart || !inStock) return;
@@ -74,18 +75,7 @@ export function ProductDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Images */}
           <div>
-            {images[0] && (
-              <img src={images[0].url} alt={translate(images[0].alt_text, locale) || name}
-                className="w-full rounded-lg" />
-            )}
-            {images.length > 1 && (
-              <div className="grid grid-cols-4 gap-2 mt-4">
-                {images.slice(1).map((img) => (
-                  <img key={img.id} src={img.url} alt={translate(img.alt_text, locale)}
-                    className="w-full aspect-square object-cover rounded" />
-                ))}
-              </div>
-            )}
+            <ProductImageGallery images={images} productName={name} />
           </div>
 
           {/* Info */}
@@ -119,7 +109,7 @@ export function ProductDetailPage() {
                 <div className="flex gap-2 mt-2">
                   {product.variants.map((v, i) => (
                     <button key={v.id} onClick={() => setSelectedVariant(i)}
-                      className={`px-4 py-2 rounded-lg text-sm border ${i === selectedVariant ? 'border-blue-600 bg-blue-50 text-blue-600' : 'border-gray-300'}`}>
+                      className={`px-4 py-2 rounded-lg text-sm border ${i === selectedVariant ? 'border-primary-600 bg-primary-50 text-primary-600' : 'border-gray-300'}`}>
                       {translate(v.name, locale) || v.sku}
                     </button>
                   ))}
@@ -143,10 +133,10 @@ export function ProductDetailPage() {
                   ${inCart
                     ? 'bg-green-100 text-green-700 border border-green-300'
                     : adding
-                      ? 'bg-blue-100 text-blue-400 cursor-wait'
+                      ? 'bg-primary-100 text-primary-400 cursor-wait'
                       : !inStock
                         ? 'bg-gray-100 text-gray-400'
-                        : 'bg-blue-600 text-white hover:bg-blue-700'
+                        : 'bg-primary-600 text-white hover:bg-primary-700'
                   }`}
               >
                 {inCart ? (

@@ -76,8 +76,8 @@ export function ProductCard({ product }: ProductCardProps) {
                   : inCart
                     ? 'bg-green-100 text-green-600 cursor-default'
                     : adding
-                      ? 'bg-blue-100 text-blue-400 cursor-wait'
-                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                      ? 'bg-primary-100 text-primary-400 cursor-wait'
+                      : 'bg-primary-600 text-white hover:bg-primary-700'
                 }`}
               title={outOfStock ? 'Out of stock' : inCart ? 'Added to cart' : 'Add to cart'}
             >

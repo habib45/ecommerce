@@ -107,7 +107,7 @@ export function AdminMediaLibrary() {
           <button
             onClick={() => fileInputRef.current?.click()}
             disabled={uploading}
-            className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 transition flex items-center gap-2"
+            className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 disabled:opacity-50 transition flex items-center gap-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -132,7 +132,7 @@ export function AdminMediaLibrary() {
 
       {/* New folder input */}
       {showFolderInput && (
-        <div className="mb-4 flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
+        <div className="mb-4 flex items-center gap-2 bg-primary-50 border border-primary-200 rounded-lg px-4 py-3">
           <input
             autoFocus
             type="text"
@@ -140,11 +140,11 @@ export function AdminMediaLibrary() {
             value={newFolderName}
             onChange={(e) => setNewFolderName(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleCreateFolder()}
-            className="flex-1 border rounded px-3 py-1.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            className="flex-1 border rounded px-3 py-1.5 text-sm focus:ring-2 focus:ring-primary-500 outline-none"
           />
           <button
             onClick={handleCreateFolder}
-            className="px-4 py-1.5 bg-blue-600 text-white text-sm rounded hover:bg-blue-700"
+            className="px-4 py-1.5 bg-primary-600 text-white text-sm rounded hover:bg-primary-700"
           >
             Create
           </button>
@@ -161,7 +161,7 @@ export function AdminMediaLibrary() {
       <nav className="flex items-center gap-1 text-sm mb-4 bg-white border rounded-lg px-4 py-2">
         <button
           onClick={() => navigateTo('')}
-          className={`hover:text-blue-600 transition ${currentPath === '' ? 'font-semibold text-gray-900' : 'text-gray-500'}`}
+          className={`hover:text-primary-600 transition ${currentPath === '' ? 'font-semibold text-gray-900' : 'text-gray-500'}`}
         >
           media
         </button>
@@ -170,7 +170,7 @@ export function AdminMediaLibrary() {
             <span className="text-gray-300">/</span>
             <button
               onClick={() => navigateToCrumb(i)}
-              className={`hover:text-blue-600 transition ${i === segments.length - 1 ? 'font-semibold text-gray-900' : 'text-gray-500'}`}
+              className={`hover:text-primary-600 transition ${i === segments.length - 1 ? 'font-semibold text-gray-900' : 'text-gray-500'}`}
             >
               {seg}
             </button>

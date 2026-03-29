@@ -46,7 +46,7 @@ export function AdminProducts() {
         return (
           <div className="flex items-center gap-1.5">
             <div className="flex-1 h-1.5 bg-gray-200 rounded-full max-w-[60px]">
-              <div className="h-1.5 bg-blue-500 rounded-full" style={{ width: `${v}%` }} />
+              <div className="h-1.5 bg-primary-500 rounded-full" style={{ width: `${v}%` }} />
             </div>
             <span className="text-xs text-gray-500 w-8">{v}%</span>
           </div>
@@ -65,7 +65,7 @@ export function AdminProducts() {
         return (
           <div className="flex items-center gap-1.5">
             <div className="flex-1 h-1.5 bg-gray-200 rounded-full max-w-[60px]">
-              <div className="h-1.5 bg-blue-500 rounded-full" style={{ width: `${v}%` }} />
+              <div className="h-1.5 bg-primary-500 rounded-full" style={{ width: `${v}%` }} />
             </div>
             <span className="text-xs text-gray-500 w-8">{v}%</span>
           </div>
@@ -105,7 +105,7 @@ export function AdminProducts() {
         <Link
           to={`/admin/products/${info.row.original.id}`}
           onClick={(e) => e.stopPropagation()}
-          className="text-blue-600 hover:underline text-xs"
+          className="text-primary-600 hover:underline text-xs"
         >
           Edit
         </Link>
@@ -123,7 +123,7 @@ export function AdminProducts() {
           <p className="text-sm text-gray-500 mt-1">{products.length} products</p>
         </div>
         <Link to="/admin/products/new"
-          className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700">
+          className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700">
           + Add Product
         </Link>
       </div>

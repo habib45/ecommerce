@@ -41,7 +41,7 @@ function PaymentForm({ onSuccess, onError }: { onSuccess: (id: string) => void; 
       <button
         type="submit"
         disabled={!stripe || processing}
-        className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="mt-4 w-full bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {processing ? t('checkout.processing') : t('checkout.placeOrder')}
       </button>

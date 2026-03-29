@@ -30,7 +30,7 @@ function CopyBtn({ onClick }: { onClick: () => void }) {
     <button
       onClick={onClick}
       title="Copy URL"
-      className="p-1 text-gray-400 hover:text-blue-600 transition"
+      className="p-1 text-gray-400 hover:text-primary-600 transition"
     >
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -72,7 +72,7 @@ export function MediaFileGrid({ items, currentPath, onNavigate, onDelete, onCopy
       {/* Folders first */}
       {folders.map((item) => (
         <div key={item.name}
-          className="bg-white border rounded-lg p-3 flex flex-col items-center gap-2 hover:border-blue-300 transition group cursor-pointer"
+          className="bg-white border rounded-lg p-3 flex flex-col items-center gap-2 hover:border-primary-300 transition group cursor-pointer"
           onClick={() => onNavigate(buildPath(currentPath, item.name))}
         >
           <FolderIcon />
@@ -93,7 +93,7 @@ export function MediaFileGrid({ items, currentPath, onNavigate, onDelete, onCopy
 
         return (
           <div key={item.name}
-            className="bg-white border rounded-lg p-3 flex flex-col items-center gap-2 hover:border-blue-300 transition group"
+            className="bg-white border rounded-lg p-3 flex flex-col items-center gap-2 hover:border-primary-300 transition group"
           >
             {isImage(item.name) ? (
               <img

@@ -15,7 +15,8 @@
     "viewAll": "Visa alla",
     "learnMore": "Läs mer",
     "currency": "Valuta",
-    "language": "Språk"
+    "language": "Språk",
+    "logout": "Logga ut"
   },
   "nav": {
     "home": "Hem",
@@ -27,7 +28,9 @@
     "wishlist": "Önskelista",
     "login": "Logga in",
     "register": "Registrera",
-    "logout": "Logga ut"
+    "logout": "Logga ut",
+    "contact": "Kontakt",
+    "about": "Om oss"
   },
   "product": {
     "addToCart": "Lägg i varukorgen",
@@ -42,7 +45,16 @@
     "recentlyViewed": "Senast visade",
     "variants": "Alternativ",
     "quantity": "Antal",
-    "sku": "Artikelnr"
+    "sku": "Artikelnr",
+    "brand": "Varumärke",
+    "model": "Modell",
+    "weight": "Vikt",
+    "dimensions": "Mått",
+    "color": "Färg",
+    "size": "Storlek",
+    "material": "Material",
+    "features": "Funktioner",
+    "specifications": "Specifikationer"
   },
   "search": {
     "placeholder": "Sök produkter...",
@@ -57,7 +69,12 @@
       "newest": "Nyast",
       "nameAsc": "Namn: A till Ö"
     },
-    "clearFilters": "Rensa filter"
+    "clearFilters": "Rensa filter",
+    "noResults": "Inga resultat hittades",
+    "viewAll": "Visa alla",
+    "learnMore": "Läs mer",
+    "currency": "Valuta",
+    "language": "Språk"
   },
   "cart": {
     "title": "Varukorg",
@@ -71,7 +88,12 @@
     "itemAdded": "Produkt tillagd i varukorgen",
     "itemRemoved": "Produkt borttagen från varukorgen",
     "items": "{{count}} produkt",
-    "items_other": "{{count}} produkter"
+    "items_other": "{{count}} produkter",
+    "noItems": "Inga produkter i varukorgen",
+    "viewCart": "Visa varukorg",
+    "learnMore": "Läs mer",
+    "currency": "Valuta",
+    "language": "Språk"
   },
   "checkout": {
     "title": "Kassa",
@@ -88,7 +110,11 @@
     "confirmationEmail": "En bekräftelse har skickats till {{email}}",
     "continueShopping": "Fortsätt handla",
     "termsOfService": "Användarvillkor",
-    "privacyPolicy": "Integritetspolicy"
+    "privacyPolicy": "Integritetspolicy",
+    "noItems": "Inga produkter i varukorgen",
+    "learnMore": "Läs mer",
+    "currency": "Valuta",
+    "language": "Språk"
   },
   "address": {
     "fullName": "Fullständigt namn",
@@ -103,7 +129,10 @@
     "district": "Distrikt",
     "thana": "Thana",
     "postort": "Postort",
-    "postnummer": "Postnummer"
+    "postnummer": "Postnummer",
+    "learnMore": "Läs mer",
+    "currency": "Valuta",
+    "language": "Språk"
   },
   "auth": {
     "login": "Logga in",
@@ -120,7 +149,8 @@
     "alreadyHaveAccount": "Har du redan ett konto?",
     "dontHaveAccount": "Har du inget konto?",
     "verifyEmail": "Kontrollera din e-post för att verifiera ditt konto",
-    "passwordResetSent": "Återställningslänk skickad till din e-post"
+    "passwordResetSent": "Återställningslänk skickad till din e-post",
+    "logout": "Logga ut"
   },
   "account": {
     "title": "Mitt konto",
@@ -131,7 +161,8 @@
     "languagePref": "Språkinställning",
     "currencyPref": "Valutainställning",
     "defaultAddress": "Standardadress",
-    "noOrders": "Inga beställningar ännu"
+    "noOrders": "Inga beställningar ännu",
+    "logout": "Logga ut"
   },
   "order": {
     "status": {

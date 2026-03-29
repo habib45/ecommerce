@@ -13,7 +13,7 @@ function statusBadge(status: string) {
   switch (status) {
     case "approved":        return "bg-green-100 text-green-700";
     case "requested":       return "bg-yellow-100 text-yellow-700";
-    case "info_requested":  return "bg-blue-100 text-blue-700";
+    case "info_requested":  return "bg-primary-100 text-primary-700";
     case "received":        return "bg-purple-100 text-purple-700";
     case "refunded":        return "bg-teal-100 text-teal-700";
     case "rejected":        return "bg-red-100 text-red-700";
@@ -166,7 +166,7 @@ export function AdminReturns() {
                     <td className="px-4 py-3 text-center">
                       <button
                         onClick={() => setExpandedId(expandedId === r.id ? null : r.id)}
-                        className="text-xs text-blue-600 hover:underline"
+                        className="text-xs text-primary-600 hover:underline"
                       >
                         {expandedId === r.id ? "Hide" : "Manage"}
                       </button>

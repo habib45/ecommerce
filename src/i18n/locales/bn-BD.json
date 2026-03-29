@@ -27,9 +27,12 @@
     "wishlist": "ইচ্ছা তালিকা",
     "login": "লগ ইন",
     "register": "নিবন্ধন",
-    "logout": "লগ আউট"
+    "logout": "লগ আউট",
+    "contact": "যোগাযোগ",
+    "about": "আমাদের সম্পর্কে"
   },
   "product": {
+    "featured": "বৈশিষ্ট্যযুক্ত",
     "addToCart": "কার্টে যোগ করুন",
     "outOfStock": "স্টকে নেই",
     "inStock": "স্টকে আছে",
@@ -42,7 +45,19 @@
     "recentlyViewed": "সম্প্রতি দেখা",
     "variants": "বিকল্প",
     "quantity": "পরিমাণ",
-    "sku": "SKU"
+    "sku": "SKU",
+    "brand": "ব্র্যান্ড",
+    "model": "মডেল",
+    "weight": "ওজন",
+    "dimensions": "মাত্রা",
+    "color": "রঙ",
+    "size": "আকার",
+    "material": "উপাদান",
+    "features": "বৈশিষ্ট্য",
+    "specifications": "বিশেষ উল্লেখ",
+    "customerReviews": "গ্রাহক রিভিউ",
+    "writeReview": "একটি রিভিউ লিখুন",
+    "averageRating": "{{rating}} এর মধ্যে 5"
   },
   "search": {
     "placeholder": "পণ্য অনুসন্ধান করুন...",
@@ -71,7 +86,21 @@
     "itemAdded": "পণ্য কার্টে যোগ হয়েছে",
     "itemRemoved": "পণ্য কার্ট থেকে সরানো হয়েছে",
     "items": "{{count}}টি পণ্য",
-    "items_other": "{{count}}টি পণ্য"
+    "items_other": "{{count}}টি পণ্য",
+    "viewCart": "কার্ট দেখুন",
+    "proceedToCheckout": "চেকআউটে যান",
+    "continueShopping": "কেনাকাটা চালিয়ে যান",
+    "emptyCart": "কার্ট খালি করুন",
+    "cartTotal": "কার্ট মোট",
+    "cartSubtotal": "কার্ট উপমোট",
+    "cartItems": "কার্ট পণ্য",
+    "removeItem": "পণ্য সরান",
+    "updateCart": "কার্ট আপডেট করুন",
+    "checkout": "চেকআউটে যান",
+    "itemAdded": "পণ্য কার্টে যোগ হয়েছে",
+    "itemRemoved": "পণ্য কার্ট থেকে সরানো হয়েছে",
+    "items": "{{count}}টি পণ্য",
+    "items_other": "{{count}}টি পণ্য" 
   },
   "checkout": {
     "title": "চেকআউট",
@@ -88,7 +117,19 @@
     "confirmationEmail": "{{email}} ঠিকানায় একটি নিশ্চিতকরণ ইমেইল পাঠানো হয়েছে",
     "continueShopping": "কেনাকাটা চালিয়ে যান",
     "termsOfService": "সেবার শর্তাবলী",
-    "privacyPolicy": "গোপনীয়তা নীতি"
+    "privacyPolicy": "গোপনীয়তা নীতি",
+    "paymentMethod": "পেমেন্ট পদ্ধতি",
+    "cardNumber": "কার্ড নম্বর",
+    "expiryDate": "মেয়াদ শেষ",
+    "cvv": "CVV",
+    "nameOnCard": "কার্ডে নাম",
+    "billingSameAsShipping": "বিলিং ঠিকানা ডেলিভারি ঠিকানার মতোই",
+    "placeOrder": "অর্ডার করুন",
+    "processing": "প্রক্রিয়াকরণ হচ্ছে...",
+    "orderConfirmed": "অর্ডার নিশ্চিত হয়েছে!",
+    "orderNumber": "অর্ডার নং {{number}}",
+    "thankYou": "আপনার অর্ডারের জন্য ধন্যবাদ",
+    "confirmationEmail": "{{email}} ঠিকানায় একটি নিশ্চিতকরণ ইমেইল পাঠানো হয়েছে"
   },
   "address": {
     "fullName": "পুরো নাম",
@@ -103,7 +144,19 @@
     "district": "জেলা",
     "thana": "থানা",
     "postort": "Postort",
-    "postnummer": "Postnummer"
+    "postnummer": "Postnummer",
+    "addNew": "নতুন ঠিকানা যোগ করুন",
+    "edit": "ঠিকানা সম্পাদনা করুন",
+    "delete": "ঠিকানা মুছে ফেলুন",
+    "setDefault": "ডিফল্ট ঠিকানা সেট করুন",
+    "default": "ডিফল্ট",
+    "noAddresses": "কোনো ঠিকানা নেই",
+    "selectAddress": "একটি ঠিকানা নির্বাচন করুন",
+    "useThisAddress": "এই ঠিকানা ব্যবহার করুন",
+    "saveAddress": "ঠিকানা সংরক্ষণ করুন",
+    "updateAddress": "ঠিকানা আপডেট করুন",
+    "deleteAddress": "ঠিকানা মুছে ফেলুন",
+    "confirmDelete": "আপনি কি এই ঠিকানা মুছে ফেলতে চান?"  
   },
   "auth": {
     "login": "লগ ইন",
@@ -120,7 +173,8 @@
     "alreadyHaveAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
     "dontHaveAccount": "অ্যাকাউন্ট নেই?",
     "verifyEmail": "আপনার অ্যাকাউন্ট যাচাই করতে ইমেইল চেক করুন",
-    "passwordResetSent": "পাসওয়ার্ড রিসেট লিংক আপনার ইমেইলে পাঠানো হয়েছে"
+    "passwordResetSent": "পাসওয়ার্ড রিসেট লিংক আপনার ইমেইলে পাঠানো হয়েছে",
+    "logout": "লগ আউট"
   },
   "account": {
     "title": "আমার অ্যাকাউন্ট",
@@ -131,7 +185,8 @@
     "languagePref": "ভাষার পছন্দ",
     "currencyPref": "মুদ্রার পছন্দ",
     "defaultAddress": "ডিফল্ট ঠিকানা",
-    "noOrders": "এখনো কোনো অর্ডার নেই"
+    "noOrders": "এখনো কোনো অর্ডার নেই",
+    "logout": "লগ আউট"
   },
   "order": {
     "status": {
@@ -152,7 +207,8 @@
     "items": "পণ্যসমূহ",
     "tracking": "ট্র্যাকিং",
     "invoice": "ইনভয়েস ডাউনলোড করুন",
-    "returnRequest": "রিটার্নের অনুরোধ করুন"
+    "returnRequest": "রিটার্নের অনুরোধ করুন",
+    "logout": "লগ আউট"
   },
   "returns": {
     "title": "রিটার্নের অনুরোধ",
@@ -174,7 +230,8 @@
     "submit": "রিটার্ন অনুরোধ জমা দিন",
     "submitted": "রিটার্নের অনুরোধ জমা হয়েছে",
     "policy": "রিটার্ন নীতি",
-    "window": "ডেলিভারির {{days}} দিনের মধ্যে পণ্য ফেরত দেওয়া যাবে"
+    "window": "ডেলিভারির {{days}} দিনের মধ্যে পণ্য ফেরত দেওয়া যাবে",
+    "logout": "লগ আউট"
   },
   "footer": {
     "about": "আমাদের সম্পর্কে",

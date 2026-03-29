@@ -25,7 +25,7 @@ export function ResetPasswordPage() {
       <form onSubmit={handleSubmit} className="space-y-4">
         <input type="email" placeholder={t('auth.email')} value={email} onChange={(e) => setEmail(e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg" required />
-        <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700">
+        <button type="submit" className="w-full bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700">
           {t('auth.sendResetLink')}
         </button>
       </form>
