@@ -7,6 +7,8 @@ const NAV = [
   { path: '/admin/categories', label: 'Categories' },
   { path: '/admin/orders', label: 'Orders' },
   { path: '/admin/customers', label: 'Customers' },
+  { path: '/admin/hero-slides', label: 'Hero Slides' },
+  { path: '/admin/media', label: 'Media Library' },
   { path: '/admin/translations', label: 'Translations' },
   { path: '/admin/returns', label: 'Returns' },
   { path: '/admin/settings', label: 'Settings' },

@@ -1,37 +1,18 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { useTranslation } from "react-i18next";
-import { ProductSearch } from "@/components/product/ProductSearch";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { useHeroSlides } from '@/hooks/useHeroSlides';
 
 export function HeroSlider() {
-  const { t } = useTranslation();
+  const { data: slides = [], isLoading } = useHeroSlides();
 
-  const slides = [
-    {
-      id: 1,
-      title: t("seo.homeTitle"),
-      description: t("seo.homeDescription"),
-      bgGradient: "from-blue-600 to-blue-800",
-      accent: "blue",
-    },
-    {
-      id: 2,
-      title: t("product.featured"),
-      description: "Discover our exclusive collection of premium products",
-      bgGradient: "from-purple-600 to-indigo-800",
-      accent: "purple",
-    },
-    {
-      id: 3,
-      title: "Special Offers",
-      description: "Get up to 50% off on selected items",
-      bgGradient: "from-pink-600 to-rose-800",
-      accent: "pink",
-    },
-  ];
+  if (isLoading) {
+    return <div className="w-full bg-gray-200 animate-pulse" style={{ height: 480 }} />;
+  }
+
+  if (slides.length === 0) return null;
 
   return (
     <Swiper
@@ -39,80 +20,77 @@ export function HeroSlider() {
       autoplay={{ delay: 5000, disableOnInteraction: false }}
       pagination={{ clickable: true }}
       navigation
-      loop
+      loop={slides.length > 1}
       className="hero-slider"
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.id}>
           <section
-            className={`bg-gradient-to-r ${slide.bgGradient} text-white py-40 md:py-40 relative`}
+            className="relative text-white overflow-hidden"
+            style={{ height: slide.height_px }}
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 animate-fade-in">
-                {slide.title}
-              </h1>
-              <p className="text-lg md:text-xl text-opacity-90 mb-8 animate-fade-in">
-                {slide.description}
-              </p>
-              <div className="max-w-md mx-auto">
-                <ProductSearch />
+            {/* Background image */}
+            <img
+              src={slide.image_url}
+              alt={slide.title ?? ''}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Gradient overlay */}
+            <div className={`absolute inset-0 bg-gradient-to-r ${slide.bg_overlay}`} />
+
+            {/* Content */}
+            {slide.show_text && (
+              <div className="relative z-10 h-full flex items-center justify-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                  {slide.title && (
+                    <h1 className="text-3xl md:text-5xl font-bold mb-4 animate-fade-in drop-shadow-lg">
+                      {slide.title}
+                    </h1>
+                  )}
+                  {slide.description && (
+                    <p className="text-lg md:text-xl mb-8 animate-fade-in drop-shadow text-white/90">
+                      {slide.description}
+                    </p>
+                  )}
+                  {slide.show_button && slide.cta_label && slide.cta_href && (
+                    <a
+                      href={slide.cta_href}
+                      className="inline-block bg-white text-gray-900 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition animate-fade-in"
+                    >
+                      {slide.cta_label}
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </section>
         </SwiperSlide>
       ))}
 
       <style>{`
         .hero-slider .swiper-pagination-bullet {
-          background-color: rgba(255, 255, 255, 0.8);
+          background-color: rgba(255,255,255,0.8);
           opacity: 0.8;
         }
         .hero-slider .swiper-pagination-bullet-active {
-          background-color: rgba(255, 255, 255, 1);
+          background-color: rgba(255,255,255,1);
           opacity: 1;
         }
         .hero-slider .swiper-button-next,
         .hero-slider .swiper-button-prev {
           color: white;
-          background-color: rgba(0, 0, 0, 0.9);
+          background-color: rgba(0,0,0,0.5);
           width: 34px;
           height: 34px;
           border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
         .hero-slider .swiper-button-next:after,
-        .hero-slider .swiper-button-prev:after {
-          font-size: 18px;
-        }
-        .hero-slider .swiper-button-next:hover,
-        .hero-slider .swiper-button-prev:hover {
-          background-color: rgba(0, 0, 0, 0.9);
-        }
+        .hero-slider .swiper-button-prev:after { font-size: 14px; }
         @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(10px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-in-out;
-        }
-        .swiper-navigation-icon{
-         height: 16px !important;
-          width: 16px !important;
-        }
-         .swiper-button-next .swiper-navigation-icon::after {
-          content: '>';
-        }
-        .swiper-button-prev .swiper-navigation-icon::after {
-          content: '<';
-          }
+        .animate-fade-in { animation: fade-in 0.8s ease-in-out; }
       `}</style>
     </Swiper>
   );

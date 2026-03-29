@@ -28,6 +28,8 @@ import { AdminTranslations } from '@/pages/admin/TranslationPage';
 import { AdminReturns } from '@/pages/admin/ReturnsPage';
 import { AdminCategories } from '@/pages/admin/CategoriesPage';
 import { AdminCategoryEditor } from '@/pages/admin/CategoryEditorPage';
+import { AdminHeroSlides } from '@/pages/admin/HeroSlidesPage';
+import { AdminMediaLibrary } from '@/pages/admin/MediaLibraryPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
 /**
@@ -113,6 +115,8 @@ export const router = createBrowserRouter([
       { path: 'categories', element: <AdminCategories /> },
       { path: 'categories/new', element: <AdminCategoryEditor /> },
       { path: 'categories/:categoryId', element: <AdminCategoryEditor /> },
+      { path: 'hero-slides', element: <AdminHeroSlides /> },
+      { path: 'media', element: <AdminMediaLibrary /> },
       { path: 'translations', element: <AdminTranslations /> },
       { path: 'returns', element: <AdminReturns /> },
       { path: 'settings', element: <AdminSettings /> },
