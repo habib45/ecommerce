@@ -29,7 +29,10 @@ import { AdminReturns } from '@/pages/admin/ReturnsPage';
 import { AdminCategories } from '@/pages/admin/CategoriesPage';
 import { AdminCategoryEditor } from '@/pages/admin/CategoryEditorPage';
 import { AdminHeroSlides } from '@/pages/admin/HeroSlidesPage';
+import { AdminAboutUs } from '@/pages/admin/AboutUsEditorPage';
 import { AdminMediaLibrary } from '@/pages/admin/MediaLibraryPage';
+import { AboutUsPage } from '@/pages/AboutUsPage';
+import { ContactUsPage } from '@/pages/ContactUsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
 /**
@@ -95,6 +98,10 @@ export const router = createBrowserRouter([
       { path: 'account/orders/:orderId', element: <OrderDetailPage /> },
       { path: 'account/orders/:orderId/return', element: <ReturnRequestPage /> },
 
+      // Informational pages
+      { path: 'about', element: <AboutUsPage /> },
+      { path: 'contact', element: <ContactUsPage /> },
+
       //admin 
       { path: 'admin', element: <AdminLayout />, children: [
         { index: true, element: <AdminDashboard /> },
@@ -120,6 +127,7 @@ export const router = createBrowserRouter([
       { path: 'categories/new', element: <AdminCategoryEditor /> },
       { path: 'categories/:categoryId', element: <AdminCategoryEditor /> },
       { path: 'hero-slides', element: <AdminHeroSlides /> },
+      { path: 'about-us', element: <AdminAboutUs /> },
       { path: 'media', element: <AdminMediaLibrary /> },
       { path: 'translations', element: <AdminTranslations /> },
       { path: 'returns', element: <AdminReturns /> },

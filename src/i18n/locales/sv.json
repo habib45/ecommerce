@@ -236,5 +236,45 @@
     "homeDescription": "Utforska vårt sortiment av kvalitetsprodukter. Fri frakt på beställningar över 500 kr.",
     "productsTitle": "Produkter — E-handelsplattformen",
     "productsDescription": "Utforska hela vårt produktsortiment"
+  },
+  "aboutUs": {
+    "title": "Om oss",
+    "metaTitle": "Om oss — Simbolos",
+    "metaDescription": "Läs mer om Simbolos — vårt uppdrag, våra värderingar och vårt engagemang för kvalitet.",
+    "whoWeAreTitle": "Vilka vi är",
+    "whoWeAreText": "Simbolos är en modern e-handelsplattform som betjänar kunder på engelska, bengaliska och svenska marknader. Vi samlar kvalitetsprodukter från pålitliga varumärken och gör dem tillgängliga för en global publik genom en sömlös flerspråkig shoppingupplevelse.",
+    "missionTitle": "Vårt uppdrag",
+    "missionText": "Vårt uppdrag är att göra onlineshopping enkelt, tillgängligt och njutbart för alla — oavsett språk eller plats. Vi tror att fantastiska produkter bör vara tillgängliga för alla, med en shoppingupplevelse som känns lokal och personlig.",
+    "whyChooseUsTitle": "Varför välja oss",
+    "whyChooseUs1": "Utvalt sortiment av kvalitetsprodukter från pålitliga varumärken",
+    "whyChooseUs2": "Sömlös flerspråkig shoppingupplevelse på engelska, bengaliska och svenska",
+    "whyChooseUs3": "Säkra betalningar via Stripe med stöd för lokal valuta",
+    "whyChooseUs4": "Dedikerad kundsupport och problemfria returer",
+    "valuesTitle": "Våra värderingar",
+    "valuesText": "Vi är engagerade i transparens, kvalitet och kundnöjdhet. Varje beslut vi fattar styrs av vår önskan att skapa en pålitlig och inkluderande shoppingplattform som sätter våra kunder i första hand."
+  },
+  "contactUs": {
+    "title": "Kontakta oss",
+    "metaTitle": "Kontakta oss — Simbolos",
+    "metaDescription": "Kontakta Simbolos-teamet. Vi finns här för att hjälpa dig med beställningar, returer och allmänna frågor.",
+    "intro": "Har du en fråga, ett problem eller feedback? Vi vill gärna höra från dig. Kontakta oss via formuläret eller direkt genom uppgifterna nedan.",
+    "emailLabel": "E-post",
+    "phoneLabel": "Telefon",
+    "hoursLabel": "Öppettider",
+    "hoursText": "Måndag – fredag, 09:00 – 18:00 (UTC)",
+    "nameField": "Ditt namn",
+    "emailField": "E-postadress",
+    "subjectField": "Ämne",
+    "selectSubject": "Välj ett ämne",
+    "subjects": {
+      "general": "Allmän fråga",
+      "order": "Beställningsproblem",
+      "return": "Retur & Återbetalning",
+      "feedback": "Feedback",
+      "other": "Övrigt"
+    },
+    "messageField": "Meddelande",
+    "submitButton": "Skicka meddelande",
+    "successMessage": "Tack! Ditt meddelande har skickats. Vi återkommer så snart som möjligt."
   }
 }

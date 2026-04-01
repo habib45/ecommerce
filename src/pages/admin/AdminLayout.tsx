@@ -8,6 +8,7 @@ const NAV = [
   { path: '/admin/orders', label: 'Orders' },
   { path: '/admin/customers', label: 'Customers' },
   { path: '/admin/hero-slides', label: 'Hero Slides' },
+  { path: '/admin/about-us', label: 'About Us' },
   { path: '/admin/media', label: 'Media Library' },
   { path: '/admin/translations', label: 'Translations' },
   { path: '/admin/returns', label: 'Returns' },

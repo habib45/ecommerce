@@ -221,5 +221,45 @@
     "homeDescription": "Browse our catalog of quality products. Free shipping on orders over $50.",
     "productsTitle": "Products — E-Commerce Platform",
     "productsDescription": "Explore our full product catalog"
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "metaTitle": "About Us — Simbolos",
+    "metaDescription": "Learn more about Simbolos — our mission, values, and commitment to quality.",
+    "whoWeAreTitle": "Who We Are",
+    "whoWeAreText": "Simbolos is a modern e-commerce platform serving customers across English, Bangla, and Swedish markets. We bring together quality products from trusted brands, making them accessible to a global audience through a seamless multilingual shopping experience.",
+    "missionTitle": "Our Mission",
+    "missionText": "Our mission is to make online shopping easy, accessible, and enjoyable for everyone — regardless of language or location. We believe that great products should be available to all, with a shopping experience that feels local and personal.",
+    "whyChooseUsTitle": "Why Choose Us",
+    "whyChooseUs1": "Curated selection of quality products from trusted brands",
+    "whyChooseUs2": "Seamless multilingual shopping experience in English, Bangla, and Swedish",
+    "whyChooseUs3": "Secure payments powered by Stripe with local currency support",
+    "whyChooseUs4": "Dedicated customer support and hassle-free returns",
+    "valuesTitle": "Our Values",
+    "valuesText": "We are committed to transparency, quality, and customer satisfaction. Every decision we make is guided by our desire to create a trustworthy and inclusive shopping platform that puts our customers first."
+  },
+  "contactUs": {
+    "title": "Contact Us",
+    "metaTitle": "Contact Us — Simbolos",
+    "metaDescription": "Get in touch with the Simbolos team. We are here to help with orders, returns, and general inquiries.",
+    "intro": "Have a question, concern, or feedback? We would love to hear from you. Reach out using the form or contact us directly through the details below.",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "hoursLabel": "Business Hours",
+    "hoursText": "Monday – Friday, 9:00 AM – 6:00 PM (UTC)",
+    "nameField": "Your Name",
+    "emailField": "Email Address",
+    "subjectField": "Subject",
+    "selectSubject": "Select a subject",
+    "subjects": {
+      "general": "General Inquiry",
+      "order": "Order Issue",
+      "return": "Return & Refund",
+      "feedback": "Feedback",
+      "other": "Other"
+    },
+    "messageField": "Message",
+    "submitButton": "Send Message",
+    "successMessage": "Thank you! Your message has been sent. We will get back to you soon."
   }
 }

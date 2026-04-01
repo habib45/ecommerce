@@ -215,7 +215,7 @@ export interface ReturnItem {
 // BRD §6.1 — banners, homepage sections
 export interface ContentBlock {
   id: string;
-  type: 'banner' | 'featured_section' | 'promo';
+  type: 'banner' | 'featured_section' | 'promo' | 'about_us' | 'contact_us';
   name: TranslationMap;
   body: TranslationMap;
   cta_label: TranslationMap;
