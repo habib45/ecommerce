@@ -12,22 +12,19 @@ import { useCartStore } from '@/stores/cartStore';
  * - Merging guest cart into user cart on login
  */
 export function useInitCart() {
-  const { user } = useAuthStore();
+  const userId = useAuthStore((s) => s.user?.id);
   const { loadCart, mergeGuestCart } = useCartStore();
 
   useEffect(() => {
-    const initializeCart = async () => {
-      if (user) {
-        // User is logged in: load their persistent cart
-        await loadCart(user.id);
-        // Merge any guest items before login
-        await mergeGuestCart(user.id);
-      } else {
-        // User is guest: load from localStorage
-        await loadCart();
-      }
-    };
-
-    initializeCart();
-  }, [user, loadCart, mergeGuestCart]);
+    if (userId) {
+      // mergeGuestCart: clears localStorage, loads DB cart, then adds any
+      // guest items that don't already exist in the DB cart.
+      mergeGuestCart(userId);
+    } else {
+      loadCart();
+    }
+  // Depend on userId (string | undefined) — not the full user object.
+  // This prevents re-running on token refresh when the user ID hasn't changed.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
 }

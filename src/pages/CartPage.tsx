@@ -29,8 +29,6 @@ export function CartPage() {
   const serviceCharge = Math.round(subtotal * 0.05);
   const total = subtotal + deliveryCharge + serviceCharge;
 
-  console.log('CartPage items:', items); // Debug log
-
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-16 text-center">
@@ -73,9 +71,9 @@ export function CartPage() {
             </div>
           )}
           {items.map((item) => {
-            const product = item.product;
-            const name = translate(product?.name ?? {}, locale) || `Product #${item.variant_id?.slice(0, 8)}`;
             const variant = item.variant;
+            const product = (variant as any)?.product ?? item.product;
+            const name = translate(product?.name ?? {}, locale) || `Product #${item.variant_id?.slice(0, 8)}`;
             const variantName = variant ? translate(variant.name, locale) : 'Unknown variant';
             const price =
               variant?.sale_prices?.[currency] ??
@@ -84,8 +82,6 @@ export function CartPage() {
             const image = product?.images?.sort(
               (a: any, b: any) => a.sort_order - b.sort_order,
             )[0];
-
-            console.log(`Item ${item.id}:`, { product, variant, price }); // Debug log
 
             return (
               <div

@@ -32,29 +32,31 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
       </Swiper>
 
       <style>{`
+        /* Hide arrows on mobile — rely on touch swipe */
         .product-carousel .swiper-button-next,
         .product-carousel .swiper-button-prev {
-          color: #1f2937;
-          background-color: rgba(229, 231, 235, 0.8);
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          display: none;
         }
-        .product-carousel .swiper-button-next:after,
-        .product-carousel .swiper-button-prev:after {
-          font-size: 16px;
-        }
-        .product-carousel .swiper-button-next:hover,
-        .product-carousel .swiper-button-prev:hover {
-          background-color: rgba(209, 213, 219, 1);
-        }
-        .product-carousel .swiper-button-next:disabled,
-        .product-carousel .swiper-button-prev:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
+        @media (min-width: 640px) {
+          .product-carousel .swiper-button-next,
+          .product-carousel .swiper-button-prev {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1f2937;
+            background-color: rgba(229, 231, 235, 0.9);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+          }
+          .product-carousel .swiper-button-next:after,
+          .product-carousel .swiper-button-prev:after {
+            font-size: 16px;
+          }
+          .product-carousel .swiper-button-next:hover,
+          .product-carousel .swiper-button-prev:hover {
+            background-color: rgba(209, 213, 219, 1);
+          }
         }
       `}</style>
     </div>

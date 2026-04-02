@@ -34,7 +34,17 @@ export function OrderDetailPage() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from('orders')
-        .select('*, items:order_items(*)')
+        .select(`
+          *,
+          items:order_items(
+            *,
+            variant:product_variants(
+              product:products(
+                images:product_images(url, alt_text, sort_order)
+              )
+            )
+          )
+        `)
         .eq('id', orderId!)
         .eq('user_id', user!.id)
         .single();
@@ -118,12 +128,27 @@ export function OrderDetailPage() {
               const variantName = typeof item.variant_name === 'object'
                 ? (item.variant_name as Record<string, string>)[locale] ?? ''
                 : '';
+              const images = (item as any).variant?.product?.images ?? [];
+              const image = [...images].sort((a: any, b: any) => a.sort_order - b.sort_order)[0];
               return (
                 <tr key={item.id}>
                   <td className="px-4 py-3">
-                    <p className="font-medium text-gray-900">{name}</p>
-                    {variantName && <p className="text-xs text-gray-400">{variantName}</p>}
-                    <p className="text-xs text-gray-400">SKU: {item.sku}</p>
+                    <div className="flex items-center gap-3">
+                      {image ? (
+                        <img
+                          src={image.url}
+                          alt={name}
+                          className="w-12 h-12 object-cover rounded border border-gray-100 flex-shrink-0"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 bg-gray-100 rounded border border-gray-100 flex-shrink-0" />
+                      )}
+                      <div>
+                        <p className="font-medium text-gray-900">{name}</p>
+                        {variantName && <p className="text-xs text-gray-400">{variantName}</p>}
+                        <p className="text-xs text-gray-400">SKU: {item.sku}</p>
+                      </div>
+                    </div>
                   </td>
                   <td className="px-4 py-3 text-center text-gray-600">{item.quantity}</td>
                   <td className="px-4 py-3 text-right text-gray-600">

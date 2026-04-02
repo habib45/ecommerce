@@ -17,9 +17,9 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
               {t('footer.about')}
             </h3>
-            <p className="text-sm text-gray-500 mb-3">
+            {/* <p className="text-sm text-gray-500 mb-3">
               {t('seo.homeDescription')}
-            </p>
+            </p> */}
             <ul className="space-y-2">
               <li><Link to={`${prefix}/about`} className="text-sm text-gray-500 hover:text-gray-700">{t('footer.about')}</Link></li>
             </ul>

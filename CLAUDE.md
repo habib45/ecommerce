@@ -8,6 +8,10 @@
 Read this file fully before writing any code, running any migration, or proposing
 any architecture change. It is the single source of truth for decisions on this project.
 
+## Companion Documents
+- [context/PROJECT_DOCUMENT.md](context/PROJECT_DOCUMENT.md) — Full project brief: tech stack, architecture diagram, DB schema, RLS patterns, environment strategy, admin roles, performance targets, timeline, stakeholders, compliance, risks
+- [context/FEATURE_DOCUMENT.md](context/FEATURE_DOCUMENT.md) — Feature-by-feature implementation status (✅/🔧/📋/⚠️), known bugs fixed, acceptance criteria, Phase 2 backlog
+
 ---
 
 ## 1. What This Project Is

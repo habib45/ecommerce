@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useLocale } from '@/hooks/useLocale';
 import { useAuthStore } from '@/stores/authStore';
-import { useCartStore } from '@/stores/cartStore';
 import toast from 'react-hot-toast';
 
 export function LoginPage() {
@@ -11,7 +10,6 @@ export function LoginPage() {
   const { locale } = useLocale();
   const navigate = useNavigate();
   const { signInWithEmail, signInWithGoogle, signInWithApple } = useAuthStore();
-  const mergeGuestCart = useCartStore((s) => s.mergeGuestCart);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -21,8 +19,7 @@ export function LoginPage() {
     setLoading(true);
     try {
       await signInWithEmail(email, password);
-      const { user } = useAuthStore.getState();
-      if (user) await mergeGuestCart(user.id);
+      // Cart merge is handled by useInitCart when user state changes — no call needed here.
       navigate(`/${locale}`);
     } catch (err: any) {
       toast.error(err.message);

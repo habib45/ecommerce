@@ -44,33 +44,37 @@ export function ProductCard({ product }: ProductCardProps) {
     >
       <div className="aspect-square bg-gray-100 overflow-hidden">
         {firstImage ? (
-          <img src={firstImage.url} alt={t(firstImage.alt_text, locale) || name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          <img
+            src={firstImage.url}
+            alt={t(firstImage.alt_text, locale) || name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-300">No image</div>
         )}
       </div>
-      <div className="p-4">
-        <h3 className="text-sm font-medium text-gray-900 truncate">{name}</h3>
-        <div className="mt-2 flex items-center justify-between gap-2">
-          {/* Price */}
-          <div className="flex items-center gap-2">
+      <div className="p-3 sm:p-4">
+        <h3 className="text-sm font-medium text-gray-900 line-clamp-2">{name}</h3>
+        <div className="mt-2 flex items-center justify-between gap-1">
+          {/* Price — min-w-0 allows text to truncate rather than push button off screen */}
+          <div className="flex flex-col min-w-0 gap-0.5">
             {salePrice != null && salePrice > 0 ? (
               <>
-                <span className="text-sm font-semibold text-red-600">{formatPrice(salePrice, currency, locale)}</span>
-                {price != null && <span className="text-xs text-gray-400 line-through">{formatPrice(price, currency, locale)}</span>}
+                <span className="text-sm font-semibold text-red-600 truncate">{formatPrice(salePrice, currency, locale)}</span>
+                {price != null && <span className="text-xs text-gray-400 line-through truncate">{formatPrice(price, currency, locale)}</span>}
               </>
             ) : price != null ? (
-              <span className="text-sm font-semibold text-gray-900">{formatPrice(price, currency, locale)}</span>
+              <span className="text-sm font-semibold text-gray-900 truncate">{formatPrice(price, currency, locale)}</span>
             ) : null}
           </div>
 
-          {/* Add to cart */}
+          {/* Add to cart — min 44×44px touch target */}
           {firstVariant && (
             <button
               onClick={handleAddToCart}
               disabled={adding || outOfStock || inCart}
-              className={`flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full transition-colors
+              className={`flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full transition-colors
                 ${outOfStock
                   ? 'bg-gray-100 text-gray-300 cursor-not-allowed'
                   : inCart

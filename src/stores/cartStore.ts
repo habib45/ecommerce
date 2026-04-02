@@ -233,15 +233,23 @@ export const useCartStore = create<CartState>((set, get) => ({
   // BRD §3.5.1 — guest cart merged on login
   mergeGuestCart: async (userId) => {
     const guestItems = loadGuestCart();
-    if (guestItems.length === 0) return;
+
+    // Clear localStorage immediately to prevent a second concurrent call from
+    // reading the same guest items and merging them again.
+    localStorage.removeItem(GUEST_CART_KEY);
 
     await get().loadCart(userId);
 
-    for (const item of guestItems) {
-      await get().addItem(item.variant_id, item.quantity);
-    }
+    if (guestItems.length === 0) return;
 
-    localStorage.removeItem(GUEST_CART_KEY);
+    // Only add guest items that do not already exist in the DB cart.
+    // Never increment quantity of existing items — that causes doubling on every login.
+    const existingVariantIds = new Set(get().items.map((i) => i.variant_id));
+    for (const item of guestItems) {
+      if (!existingVariantIds.has(item.variant_id)) {
+        await get().addItem(item.variant_id, item.quantity);
+      }
+    }
   },
 
   getSubtotal: () => {
