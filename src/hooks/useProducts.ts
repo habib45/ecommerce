@@ -206,6 +206,7 @@ export function useProductSearch(query: string, locale: LocaleCode) {
   return useQuery({
     queryKey: ['search', query, locale],
     queryFn: async () => {
+      /* v8 ignore next -- `enabled` already prevents queryFn from running with an empty query */
       if (!query.trim()) return [];
 
       const { data, error } = await supabase

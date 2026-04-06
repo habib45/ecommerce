@@ -11,28 +11,27 @@ interface ProductCarouselProps {
 
 export function ProductCarousel({ products }: ProductCarouselProps) {
   return (
-    <div className="product-carousel">
+    <div className="product-carousel -mx-2">
       <Swiper
         modules={[Navigation]}
         navigation
-        spaceBetween={20}
+        spaceBetween={16}
         breakpoints={{
-          320: { slidesPerView: 1 },
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-          1280: { slidesPerView: 4 },
+          320: { slidesPerView: 2, spaceBetween: 12 },
+          640: { slidesPerView: 2, spaceBetween: 16 },
+          1024: { slidesPerView: 3, spaceBetween: 20 },
+          1280: { slidesPerView: 4, spaceBetween: 24 },
         }}
-        className="w-full"
+        className="w-full px-2"
       >
         {products.map((product) => (
-          <SwiperSlide key={product.id}>
+          <SwiperSlide key={product.id} className="pb-2">
             <ProductCard product={product} />
           </SwiperSlide>
         ))}
       </Swiper>
 
       <style>{`
-        /* Hide arrows on mobile — rely on touch swipe */
         .product-carousel .swiper-button-next,
         .product-carousel .swiper-button-prev {
           display: none;
@@ -44,18 +43,21 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
             align-items: center;
             justify-content: center;
             color: #1f2937;
-            background-color: rgba(229, 231, 235, 0.9);
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             width: 44px;
             height: 44px;
-            border-radius: 50%;
+            border-radius: 14px;
+            transition: all 0.2s;
           }
           .product-carousel .swiper-button-next:after,
           .product-carousel .swiper-button-prev:after {
-            font-size: 16px;
+            font-size: 14px;
+            font-weight: bold;
           }
           .product-carousel .swiper-button-next:hover,
           .product-carousel .swiper-button-prev:hover {
-            background-color: rgba(209, 213, 219, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
           }
         }
       `}</style>

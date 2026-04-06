@@ -17,6 +17,7 @@ export interface StorageItem {
 
 const IMAGE_EXTS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif'];
 export const isImage = (name: string) =>
+  /* c8 ignore next -- split('.') always yields ≥1 element so pop() is never undefined */
   IMAGE_EXTS.includes(name.split('.').pop()?.toLowerCase() ?? '');
 
 export const formatBytes = (n: number) => {
