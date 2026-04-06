@@ -48,7 +48,7 @@ export function Footer() {
             <Link to={prefix} className="text-2xl font-bold tracking-tight">
               Simbolos
             </Link>
-            <p className="mt-3 text-sm text-gray-400 leading-relaxed max-w-xs">
+            <p className="mt-3 text-sm text-white/80 leading-relaxed max-w-xs">
               {t('footer.brandDescription', 'Your destination for quality products across English, Bangla, and Swedish markets.')}
             </p>
             {/* Social links */}
@@ -69,7 +69,7 @@ export function Footer() {
 
           {/* Shop */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
               {t('footer.shop', 'Shop')}
             </h3>
             <ul className="space-y-3">
@@ -81,7 +81,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
               {t('footer.company', 'Company')}
             </h3>
             <ul className="space-y-3">
@@ -92,7 +92,7 @@ export function Footer() {
 
           {/* Help */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
               {t('footer.help', 'Help')}
             </h3>
             <ul className="space-y-3">
@@ -104,16 +104,16 @@ export function Footer() {
 
           {/* Settings */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
               {t('footer.settings', 'Settings')}
             </h3>
             <div className="space-y-3">
               <div>
-                <p className="text-xs text-gray-500 mb-1.5">{t('common.language')}</p>
+                <p className="text-xs text-white/70 mb-1.5">{t('common.language')}</p>
                 <LanguageSwitcher />
               </div>
               <div>
-                <p className="text-xs text-gray-500 mb-1.5">{t('common.currency')}</p>
+                <p className="text-xs text-white/70 mb-1.5">{t('common.currency')}</p>
                 <CurrencySwitcher />
               </div>
             </div>
@@ -124,23 +124,23 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="section py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-white/70">
             &copy; {new Date().getFullYear()} Simbolos. {t('footer.allRightsReserved')}.
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-            <Link to={`${prefix}/terms`} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+            <Link to={`${prefix}/terms`} className="text-xs text-white/70 hover:text-white/100 transition-colors">
               {t('footer.terms')}
             </Link>
-            <Link to={`${prefix}/privacy`} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+            <Link to={`${prefix}/privacy`} className="text-xs text-white/70 hover:text-white/100 transition-colors">
               {t('footer.privacy')}
             </Link>
-            <Link to={`${prefix}/cookies`} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+            <Link to={`${prefix}/cookies`} className="text-xs text-white/70 hover:text-white/100 transition-colors">
               {t('footer.cookiePolicy')}
             </Link>
           </div>
           {/* Payment icons */}
           <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-500 mr-1">{t('footer.weAccept', 'We accept')}</span>
+            <span className="text-xs text-white/70 mr-1">{t('footer.weAccept', 'We accept')}</span>
             <PaymentIcon label="Visa">
               <rect x="1" y="4" width="22" height="16" rx="2" fill="#1434CB" />
               <text x="12" y="14" textAnchor="middle" fill="white" fontSize="7" fontWeight="bold" fontFamily="sans-serif">VISA</text>
@@ -173,7 +173,7 @@ function TrustItem({ icon, title, description }: { icon: React.ReactNode; title:
       </div>
       <div>
         <h4 className="text-sm font-semibold text-white">{title}</h4>
-        <p className="text-xs text-gray-400 mt-0.5">{description}</p>
+        <p className="text-xs text-white/80 mt-0.5">{description}</p>
       </div>
     </div>
   );
@@ -182,7 +182,7 @@ function TrustItem({ icon, title, description }: { icon: React.ReactNode; title:
 function FooterLink({ to, children }: { to: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link to={to} className="text-sm text-gray-400 hover:text-white transition-colors">
+      <Link to={to} className="text-sm text-white/80 hover:text-white/100 transition-colors">
         {children}
       </Link>
     </li>
@@ -196,7 +196,7 @@ function SocialLink({ href, label, children }: { href: string; label: string; ch
       aria-label={label}
       className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
     >
-      <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         {children}
       </svg>
     </a>
