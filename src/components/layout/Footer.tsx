@@ -98,7 +98,7 @@ export function Footer() {
             <ul className="space-y-3">
               <FooterLink to={`${prefix}/shipping`}>{t('footer.shipping')}</FooterLink>
               <FooterLink to={`${prefix}/returns`}>{t('footer.returns')}</FooterLink>
-              <FooterLink to={`${prefix}/contact`}>{t('footer.faq', 'FAQ')}</FooterLink>
+              <FooterLink to={`${prefix}/faq`}>{t('footer.faq', 'FAQ')}</FooterLink>
             </ul>
           </div>
 

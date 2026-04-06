@@ -35,6 +35,7 @@ import { AdminVisitorAnalytics } from '@/pages/admin/VisitorAnalyticsPage';
 import { AboutUsPage } from '@/pages/AboutUsPage';
 import { ContactUsPage } from '@/pages/ContactUsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { FAQPage } from '@/pages/FAQPage';
 
 /**
  * BRD §3.2.2 — locale detection order:
@@ -102,6 +103,7 @@ export const router = createBrowserRouter([
       // Informational pages
       { path: 'about', element: <AboutUsPage /> },
       { path: 'contact', element: <ContactUsPage /> },
+      { path: 'faq', element: <FAQPage /> },
 
       //admin 
       { path: 'admin', element: <AdminLayout />, children: [
