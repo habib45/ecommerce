@@ -7,16 +7,7 @@ interface VisitorData {
   uniqueVisitors?: number;
   bounceRate?: number;
   avgSessionDuration?: number;
-}
-
-// Parameters for the Supabase function
-interface TrackVisitorParams {
-  p_date: string;
-  p_visitors?: number;
-  p_page_views?: number;
-  p_unique_visitors?: number;
-  p_bounce_rate?: number;
-  p_avg_session_duration?: number;
+  country?: string;
 }
 
 // Simple client-side visitor tracking
@@ -29,6 +20,28 @@ export class VisitorTracker {
   private constructor() {
     this.sessionId = this.generateSessionId();
     this.pageStartTime = Date.now();
+  }
+
+  private getCountry(): string {
+    // Try to get country from timezone
+    try {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const countryMap: { [key: string]: string } = {
+        'America/New_York': 'US',
+        'America/Los_Angeles': 'US',
+        'America/Chicago': 'US',
+        'Europe/London': 'GB',
+        'Europe/Paris': 'FR',
+        'Europe/Berlin': 'DE',
+        'Asia/Tokyo': 'JP',
+        'Asia/Shanghai': 'CN',
+        'Australia/Sydney': 'AU',
+        'Canada/Eastern': 'CA',
+      };
+      return countryMap[timezone] || 'US';
+    } catch {
+      return 'US'; // Default fallback
+    }
   }
 
   static getInstance(): VisitorTracker {
@@ -60,10 +73,11 @@ export class VisitorTracker {
     this.trackVisitor({
       date: today,
       visitors: 1,
-      pageViews: 1,
-      uniqueVisitors: sessionData.uniqueVisitors === 0 ? 1 : 0,
+      pageViews: sessionData.pageViews,
+      uniqueVisitors: sessionData.uniqueVisitors,
       bounceRate,
       avgSessionDuration: Math.floor(sessionDuration / 1000), // Convert to seconds
+      country: this.getCountry()
     });
 
     this.hasTrackedToday = true;
@@ -92,17 +106,38 @@ export class VisitorTracker {
 
   private async trackVisitor(data: VisitorData): Promise<void> {
     try {
-      const { error } = await supabase.rpc('track_daily_visitors', {
+      // Use bypass function that works with RLS
+      const { error } = await supabase.rpc('insert_visitor_analytics', {
         p_date: data.date,
         p_visitors: data.visitors,
         p_page_views: data.pageViews,
         p_unique_visitors: data.uniqueVisitors,
         p_bounce_rate: data.bounceRate,
-        p_avg_session_duration: data.avgSessionDuration
-      } as TrackVisitorParams);
+        p_avg_session_duration: data.avgSessionDuration,
+        p_country: data.country || 'US'
+      });
 
       if (error) {
-        console.error('Visitor tracking error:', error);
+        console.error('Visitor tracking failed:', error);
+        
+        // Fallback: try direct table insertion
+        const { error: insertError } = await supabase
+          .from('visitor_analytics')
+          .upsert({
+            date: data.date,
+            visitors: data.visitors,
+            page_views: data.pageViews,
+            unique_visitors: data.uniqueVisitors,
+            bounce_rate: data.bounceRate,
+            avg_session_duration: data.avgSessionDuration,
+            country: data.country || 'US'
+          }, {
+            onConflict: 'date'
+          });
+
+        if (insertError) {
+          console.error('Direct insert also failed:', insertError);
+        }
       }
     } catch (err) {
       console.error('Failed to track visitor:', err);

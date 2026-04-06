@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase/client';
 import { DataTable } from '@/components/admin/DataTable';
 import type { ColumnDef } from '@tanstack/react-table';
+import { testVisitorAPI } from '@/lib/testVisitorAPI';
 
 interface VisitorStats {
   id: string;
@@ -12,6 +13,7 @@ interface VisitorStats {
   unique_visitors: number;
   bounce_rate: number;
   avg_session_duration: number;
+  country: string;
 }
 
 export function AdminVisitorAnalytics() {
@@ -24,9 +26,49 @@ export function AdminVisitorAnalytics() {
     };
   });
 
+  // Run API test on component mount
+  useMemo(() => {
+    testVisitorAPI().then(results => {
+      console.log('API Test Results:', results);
+    });
+  }, []);
+
+  // Test function to insert sample data
+  const insertTestData = async () => {
+    try {
+      const today = new Date().toISOString().split('T')[0];
+      const { error } = await supabase.rpc('insert_visitor_analytics', {
+        p_date: today,
+        p_visitors: 25,
+        p_page_views: 87,
+        p_unique_visitors: 19,
+        p_bounce_rate: 42.5,
+        p_avg_session_duration: 180
+      });
+      
+      console.log('Test data insert result:', { error });
+      if (!error) {
+        window.location.reload(); // Refresh to show new data
+      }
+    } catch (err) {
+      console.error('Failed to insert test data:', err);
+    }
+  };
+
   const { data: stats = [], isLoading } = useQuery({
     queryKey: ['visitor-analytics', dateRange],
     queryFn: async () => {
+      console.log('Fetching visitor analytics for date range:', dateRange);
+      
+      // First try to get all data without date filter to see if table has data
+      const { data: allData, error: allError } = await supabase
+        .from('visitor_analytics')
+        .select('date, visitors')
+        .limit(5);
+      
+      console.log('All data check:', { allData, allError });
+      
+      // Then get filtered data
       const { data, error } = await supabase
         .from('visitor_analytics')
         .select('*')
@@ -34,11 +76,14 @@ export function AdminVisitorAnalytics() {
         .lte('date', dateRange.end)
         .order('date', { ascending: false });
 
+      console.log('Visitor analytics query result:', { data, error });
+
       if (error) {
         console.error('Visitor analytics query error:', error);
         throw error;
       }
 
+      console.log('Returning stats data:', data?.length || 0, 'records');
       return (data ?? []) as VisitorStats[];
     },
   });
@@ -79,6 +124,20 @@ export function AdminVisitorAnalytics() {
       cell: (info) => {
         const value = info.getValue() as number;
         return <span className="font-semibold text-purple-600">{value.toLocaleString()}</span>;
+      },
+      meta: { className: 'text-center' },
+      enableSorting: true,
+    },
+    {
+      accessorKey: 'country',
+      header: 'Country',
+      cell: (info) => {
+        const value = info.getValue() as string;
+        return (
+          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            {value}
+          </span>
+        );
       },
       meta: { className: 'text-center' },
       enableSorting: true,
@@ -141,6 +200,12 @@ export function AdminVisitorAnalytics() {
           </p>
         </div>
         <div className="flex gap-4">
+          <button
+            onClick={insertTestData}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+          >
+            Insert Test Data
+          </button>
           <input
             type="date"
             value={dateRange.start}
@@ -189,7 +254,7 @@ export function AdminVisitorAnalytics() {
         columns={columns}
         isLoading={isLoading}
         clientSearch={false}
-        emptyMessage="No visitor data found for the selected date range"
+        emptyMessage="No visitor data found for the selected date range. Try clicking 'Insert Test Data' to add sample data or check the browser console for debugging information."
         pageSize={31}
       />
     </div>

@@ -22,11 +22,15 @@ CREATE INDEX idx_visitor_analytics_date_desc ON public.visitor_analytics(date DE
 -- Enable RLS
 ALTER TABLE public.visitor_analytics ENABLE ROW LEVEL SECURITY;
 
--- Only admins can manage visitor analytics
+-- Only admins can manage visitor analytics (read/update/delete)
 CREATE POLICY "Admins can manage visitor analytics" ON public.visitor_analytics FOR ALL
 USING (auth.jwt() ->> 'role' IN ('administrator', 'store_manager'));
 
--- Public read access for analytics dashboard
+-- Allow anyone to insert visitor data (for tracking)
+CREATE POLICY "Anyone can insert visitor analytics" ON public.visitor_analytics FOR INSERT
+WITH CHECK (true);
+
+-- Allow admins to read visitor analytics
 CREATE POLICY "Visitor analytics are readable by admins" ON public.visitor_analytics FOR SELECT
 USING (auth.jwt() ->> 'role' IN ('administrator', 'store_manager'));
 

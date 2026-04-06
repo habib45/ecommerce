@@ -53,6 +53,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- Grant execute permissions to authenticated users
+-- Grant execute permissions to all users (including unauthenticated for tracking)
 GRANT EXECUTE ON FUNCTION public.track_daily_visitors TO authenticated;
+GRANT EXECUTE ON FUNCTION public.track_daily_visitors TO anon;
 GRANT EXECUTE ON FUNCTION public.get_visitor_analytics TO authenticated;

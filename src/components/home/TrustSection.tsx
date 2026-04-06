@@ -85,14 +85,14 @@ export function TrustSection() {
   return (
     <section className="py-8 sm:py-10">
       <div className="section border-1">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 lg:gap-6">
           {trustItems.map((item, index) => (
             <div key={index} className="trust-badge text-center">
               <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                 <div className="text-primary">{item.icon}</div>
               </div>
-              <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
-              <p className="text-xs text-muted-foreground">
+              <h3 className="font-semibold text-sm mb-1 leading-tight break-words px-1">{item.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed break-words px-1">
                 {item.description}
               </p>
             </div>
