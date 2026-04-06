@@ -141,7 +141,7 @@ describe('getSubtotal', () => {
             product_id: 'p1',
             sku: 'SKU',
             name: { en: 'X' },
-            prices: {},
+            prices: { USD: 0, BDT: 0, SEK: 0, EUR: 0 },
             sale_prices: null,
             sale_start: null,
             sale_end: null,
@@ -198,7 +198,7 @@ describe('loadCart – guest (no userId)', () => {
 
     await useCartStore.getState().loadCart();
     expect(useCartStore.getState().items).toHaveLength(1);
-    expect(useCartStore.getState().items[0].variant_id).toBe('v-abc');
+    expect(useCartStore.getState().items[0]?.variant_id).toBe('v-abc');
   });
 
   it('falls back to raw guest items on variant fetch error', async () => {
@@ -343,7 +343,7 @@ describe('addItem – guest cart', () => {
     await useCartStore.getState().addItem('variant-new', 1);
     const items = useCartStore.getState().items;
     expect(items).toHaveLength(1);
-    expect(items[0].variant_id).toBe('variant-new');
+    expect(items[0]?.variant_id).toBe('variant-new');
   });
 
   it('increments quantity for existing guest item', async () => {
@@ -362,7 +362,7 @@ describe('addItem – guest cart', () => {
 
     await useCartStore.getState().addItem('v1', 2);
     const items = useCartStore.getState().items;
-    expect(items[0].quantity).toBe(3);
+    expect(items[0]?.quantity).toBe(3);
   });
 
   it('throws when stock is insufficient', async () => {
@@ -437,7 +437,7 @@ describe('addItem – authenticated cart', () => {
       .mockReturnValueOnce(updateMock as any);
 
     await useCartStore.getState().addItem('v1', 3);
-    expect(useCartStore.getState().items[0].quantity).toBe(4);
+    expect(useCartStore.getState().items[0]?.quantity).toBe(4);
   });
 
   it('updates existing item while preserving other items (covers ternary false branch)', async () => {
@@ -478,7 +478,7 @@ describe('updateItemQuantity', () => {
       items: [makeItem({ id: 'i1', quantity: 1 })],
     });
     await useCartStore.getState().updateItemQuantity('i1', 5);
-    expect(useCartStore.getState().items[0].quantity).toBe(5);
+    expect(useCartStore.getState().items[0]?.quantity).toBe(5);
   });
 
   it('preserves other items when updating one (covers ternary false branch)', async () => {
@@ -527,7 +527,7 @@ describe('removeItem', () => {
     await useCartStore.getState().removeItem('i1');
     const items = useCartStore.getState().items;
     expect(items).toHaveLength(1);
-    expect(items[0].id).toBe('i2');
+    expect(items[0]?.id).toBe('i2');
   });
 
   it('removes from DB when cartId exists', async () => {
@@ -635,7 +635,7 @@ describe('mergeGuestCart', () => {
 
     await useCartStore.getState().mergeGuestCart('user-1');
     expect(useCartStore.getState().items).toHaveLength(1);
-    expect(useCartStore.getState().items[0].variant_id).toBe('v-guest');
+    expect(useCartStore.getState().items[0]?.variant_id).toBe('v-guest');
   });
 
   it('skips guest items already present in DB cart', async () => {
@@ -661,7 +661,7 @@ describe('mergeGuestCart', () => {
     await useCartStore.getState().mergeGuestCart('user-1');
     // Should not add duplicate — addItem should not be called
     // Items stay as loaded from DB
-    expect(useCartStore.getState().items[0].variant_id).toBe('v-existing');
+    expect(useCartStore.getState().items[0]?.variant_id).toBe('v-existing');
   });
 });
 

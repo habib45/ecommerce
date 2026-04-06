@@ -6,6 +6,7 @@ import { router } from "./router";
 import { useEffect } from "react";
 import { useAuthStore } from "@/stores/authStore";
 import { useInitCart } from "@/hooks/useInitCart";
+import { useVisitorTracking } from "@/hooks/useVisitorTracking";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,6 +20,7 @@ const queryClient = new QueryClient({
 function AppInitializer() {
   const initialize = useAuthStore((s) => s.initialize);
   useInitCart(); // Initialize cart on app load and sync with auth
+  useVisitorTracking(); // Initialize visitor tracking
 
   useEffect(() => {
     initialize();

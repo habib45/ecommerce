@@ -9,6 +9,7 @@ import type { ColumnDef } from '@tanstack/react-table';
 
 type ProductWithStock = Product & {
   product_variants: { stock_quantity: number }[];
+  product_images: { url: string; alt_text: TranslationMap; sort_order: number }[];
 };
 
 const totalStock = (p: ProductWithStock) =>
@@ -20,15 +21,49 @@ export function AdminProducts() {
   const { data: products = [], isLoading } = useQuery({
     queryKey: ['admin-products'],
     queryFn: async () => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from('products')
-        .select('*, product_variants(stock_quantity)')
+        .select(`
+          *,
+          product_variants(stock_quantity),
+          product_images(url, alt_text, sort_order)
+        `)
         .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Products query error:', error);
+        throw error;
+      }
+      
       return (data ?? []) as ProductWithStock[];
     },
   });
 
   const columns = useMemo<ColumnDef<ProductWithStock, any>[]>(() => [
+    {
+      id: 'image',
+      header: 'Image',
+      cell: (info) => {
+        const product = info.row.original;
+        const image = product.product_images?.[0]; // Get first image
+        if (image?.url) {
+          return (
+            <img
+              src={image.url}
+              alt={t(product.name as TranslationMap, 'en')}
+              className="w-12 h-12 object-cover rounded-lg"
+            />
+          );
+        }
+        return (
+          <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+            <span className="text-gray-400 text-xs">No image</span>
+          </div>
+        );
+      },
+      meta: { className: 'text-center' },
+      enableSorting: false,
+    },
     {
       accessorFn: (p) => t(p.name as TranslationMap, 'en'),
       id: 'name',
@@ -100,7 +135,7 @@ export function AdminProducts() {
     },
     {
       id: 'actions',
-      header: '',
+      header: 'Actions',
       cell: (info) => (
         <Link
           to={`/admin/products/${info.row.original.id}`}

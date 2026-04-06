@@ -118,7 +118,7 @@ describe('useStorageItems', () => {
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
     // .keep filtered out
     expect(result.current.data).toHaveLength(1);
-    expect(result.current.data![0].name).toBe('image.jpg');
+    expect(result.current.data?.[0]?.name).toBe('image.jpg');
   });
 
   it('handles empty root path', async () => {

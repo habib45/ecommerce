@@ -31,6 +31,7 @@ import { AdminCategoryEditor } from '@/pages/admin/CategoryEditorPage';
 import { AdminHeroSlides } from '@/pages/admin/HeroSlidesPage';
 import { AdminAboutUs } from '@/pages/admin/AboutUsEditorPage';
 import { AdminMediaLibrary } from '@/pages/admin/MediaLibraryPage';
+import { AdminVisitorAnalytics } from '@/pages/admin/VisitorAnalyticsPage';
 import { AboutUsPage } from '@/pages/AboutUsPage';
 import { ContactUsPage } from '@/pages/ContactUsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
@@ -123,6 +124,7 @@ export const router = createBrowserRouter([
       { path: 'orders', element: <AdminOrders /> },
       { path: 'orders/:orderId', element: <AdminOrderDetail /> },
       { path: 'customers', element: <AdminCustomers /> },
+      { path: 'visitor-analytics', element: <AdminVisitorAnalytics /> },
       { path: 'categories', element: <AdminCategories /> },
       { path: 'categories/new', element: <AdminCategoryEditor /> },
       { path: 'categories/:categoryId', element: <AdminCategoryEditor /> },
