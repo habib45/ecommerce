@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase/client';
 import type { Product, LocaleCode, Category, SearchResult } from '@/types/domain';
+import { LOCALE_CURRENCY_MAP } from '@/types/domain';
 
 // ─── Single Product by locale-specific slug ───────────────────────
 // BRD §3.2.4 — locale-specific slugs
@@ -159,13 +160,16 @@ export function useProducts({
         );
       }
 
-      // Sorting
+      // Sorting — price sorts handled client-side (JSONB multi-currency prices)
       switch (sortBy) {
         case 'newest':
           query = query.order('created_at', { ascending: false });
           break;
         case 'name':
-          // Name sorting handled client-side below
+        case 'price_asc':
+        case 'price_desc':
+          // Handled client-side below after fetch
+          query = query.order('created_at', { ascending: false });
           break;
         default:
           query = query.order('created_at', { ascending: false });
@@ -180,13 +184,23 @@ export function useProducts({
 
       let products = (data ?? []) as unknown as Product[];
 
-      // Client-side sorting for name if requested (JSONB column ordering via API is complex)
-      if (sortBy === 'name' && products.length > 0) {
-        products = products.sort((a, b) => {
-          const nameA = (a.name as any)?.[locale] || '';
-          const nameB = (b.name as any)?.[locale] || '';
-          return nameA.localeCompare(nameB);
-        });
+      // Client-side sorting (JSONB column ordering via Supabase API is complex)
+      if (products.length > 1) {
+        const currency = LOCALE_CURRENCY_MAP[locale];
+
+        if (sortBy === 'name') {
+          products = products.sort((a, b) => {
+            const nameA = (a.name as any)?.[locale] || '';
+            const nameB = (b.name as any)?.[locale] || '';
+            return nameA.localeCompare(nameB);
+          });
+        } else if (sortBy === 'price_asc' || sortBy === 'price_desc') {
+          products = products.sort((a, b) => {
+            const priceA = a.variants?.[0]?.sale_prices?.[currency] ?? a.variants?.[0]?.prices[currency] ?? 0;
+            const priceB = b.variants?.[0]?.sale_prices?.[currency] ?? b.variants?.[0]?.prices[currency] ?? 0;
+            return sortBy === 'price_asc' ? priceA - priceB : priceB - priceA;
+          });
+        }
       }
 
       return {

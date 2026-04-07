@@ -13,6 +13,7 @@ const NAV = [
   { path: '/admin/media', label: 'Media Library' },
   { path: '/admin/translations', label: 'Translations' },
   { path: '/admin/returns', label: 'Returns' },
+  { path: '/admin/reviews', label: 'Reviews' },
   { path: '/admin/settings', label: 'Settings' },
 ];
 

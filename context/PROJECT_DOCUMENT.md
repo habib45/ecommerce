@@ -68,19 +68,26 @@ Stripe ──── webhooks ────────► supabase/functions/stri
 ```
 src/
   components/       — UI components (display only; no business logic)
-    home/           — HeroSlider, ProductCarousel
-    product/        — ProductCard, ProductGrid
-    admin/          — AdminLayout, admin-specific UI
+    home/           — HeroSlider, HeroSection, ProductCarousel, CategoryGrid, NewsletterSection, TestimonialsSection, TrustSection
+    product/        — ProductCard, ProductGrid, ProductSearch, ProductImageGallery
+    cart/           — CartDrawer
+    checkout/       — AddressForm, StripePayment
+    layout/         — Header, Footer, LocaleLayout, LanguageSwitcher, CurrencySwitcher
+    admin/          — AdminLayout, DataTable, MediaFileGrid
   pages/            — Route-level page components
-    admin/          — AdminDashboard, OrdersPage, ReturnsPage, TranslationsPage
-  hooks/            — Reusable React hooks (useProducts, useInitCart, etc.)
-  stores/           — Zustand state slices (authStore, cartStore, localeStore)
-  services/         — API layer — one file per domain (product, order, cart)
-  lib/              — Pure utilities (format.ts, translate.ts)
+    admin/          — DashboardPage, ProductsPage, ProductEditorPage, CategoriesPage, CategoryEditorPage, OrdersPage, OrderDetailPage, CustomersPage, VisitorAnalyticsPage, HeroSlidesPage, AboutUsEditorPage, MediaLibraryPage, TranslationPage, ReturnsPage, SettingsPage
+    auth/           — LoginPage, RegisterPage, ResetPasswordPage, AuthCallbackPage
+  hooks/            — Reusable React hooks (useProducts, useInitCart, useLocale, useStoreSettings, useContentBlocks, useShippingAddresses, useSavedAddress, useMediaLibrary, useHeroSlides, useVisitorTracking)
+  stores/           — Zustand state slices (authStore, cartStore)
+  lib/              — Pure utilities (format.ts, translate.ts, visitorTracking.ts)
+    supabase/       — Supabase client initialisation (client.ts)
+    stripe/         — Stripe client initialisation (client.ts)
   types/
     domain.ts       — Hand-authored domain types (TranslationMap, Product, etc.)
     supabase.ts     — Auto-generated — DO NOT EDIT
-  messages/         — i18n JSON files (en.json, bn-BD.json, sv.json)
+  i18n/
+    config.ts       — i18next configuration
+    locales/        — i18n JSON files (en.json, bn-BD.json, sv.json)
 ```
 
 ### Supabase Storage Buckets
@@ -95,18 +102,42 @@ Folders are virtual (path prefixes); `.keep` placeholder files are used to persi
 ```
 supabase/functions/
   create-payment-intent/   — Stripe PaymentIntent creation
+  confirm-order/           — Confirm order after payment with inventory decrement
   stripe-webhook/          — Stripe webhook event handling
   send-email/              — Transactional emails via Resend
   issue-refund/            — Admin-triggered Stripe refunds
+  process-refund/          — Process customer refunds
+  admin-create-user/       — Admin user creation (from Customers page)
   fx-rate-refresh/         — Scheduled cron: BDT and SEK exchange rates
-  export-xliff/            — Admin translation export
-  import-xliff/            — Admin translation import
+  execute-migrations/      — Database migration runner
   gdpr-erasure/            — GDPR right-to-erasure
 ```
 
 ---
 
 ## 4. Multi-Language & i18n Design
+
+### Customer-Facing Pages
+```
+/:locale/                      — HomePage
+/:locale/products              — ProductListPage
+/:locale/products/:slug        — ProductDetailPage
+/:locale/categories            — CategoriesListPage
+/:locale/categories/:slug      — ProductListPage (filtered)
+/:locale/cart                  — CartPage
+/:locale/checkout              — CheckoutPage
+/:locale/order-confirmation/:id — OrderConfirmationPage
+/:locale/account               — AccountPage (addresses)
+/:locale/account/orders        — OrderHistoryPage
+/:locale/account/orders/:id    — OrderDetailPage
+/:locale/account/orders/:id/return — ReturnRequestPage
+/:locale/about                 — AboutUsPage
+/:locale/contact               — ContactUsPage
+/:locale/faq                   — FAQPage
+/:locale/login                 — LoginPage
+/:locale/register              — RegisterPage
+/:locale/reset-password        — ResetPasswordPage
+```
 
 ### Supported Locales
 
@@ -165,12 +196,17 @@ const stripeLocale = locale === 'bn-BD' ? 'bn' : locale;
 | `ui_translations` | Admin-editable UI strings | `locale FK`, `namespace`, `key`, `value` |
 | `hero_slides` | Homepage banner carousel | `image_url`, `title`, `description`, `cta_label`, `cta_href`, `show_text`, `show_button`, `is_active`, `height_px`, `sort_order`, `bg_overlay` |
 | `discount_codes` | Promo codes | `code`, `discount_type`, `value`, `is_active` |
+| `visitor_analytics` | Visitor tracking per day | `date`, `visitors`, `page_views`, `unique_visitors`, `bounce_rate`, `avg_session_duration`, `country` |
+| `content_blocks` | CMS content (About Us, Contact, etc.) | `type`, `name JSONB`, `body JSONB`, `cta_label JSONB`, `cta_url JSONB`, `is_active`, `sort_order` |
+| `store_settings` | Store configuration | `key`, `value JSONB` (e.g., delivery fees per currency) |
+| `shipping_addresses` | User saved addresses | `user_id FK`, `label`, `address JSONB`, `is_default` |
 
 ### RPC Functions (Supabase)
 | Function | Purpose |
 |---|---|
 | `get_product_by_slug(p_slug, p_locale)` | Locale-specific slug lookup via JSONB |
 | `get_products_by_category_slug(p_category_slug, p_locale, p_limit, p_offset)` | Category-filtered product listing with pagination |
+| `insert_visitor_analytics(p_date, p_visitors, p_page_views, p_unique_visitors, p_bounce_rate, p_avg_session_duration)` | Public RPC for inserting visitor tracking data |
 
 ### RLS Policy Pattern
 ```sql
@@ -240,6 +276,20 @@ node scripts/create-admin-user.mjs admin@example.com "SecurePass123!" "Admin Nam
 ```
 
 **Admin panel URL:** `/admin` (English only — no i18n of admin interface)
+
+**Admin pages:**
+- `/admin` — Dashboard (order/product counts)
+- `/admin/products` — Product management (list, create, edit)
+- `/admin/categories` — Category management (list, create, edit)
+- `/admin/orders` — Order management (list, detail, status edit)
+- `/admin/customers` — Customer management (list, create users)
+- `/admin/visitor-analytics` — Visitor analytics dashboard
+- `/admin/hero-slides` — Hero carousel management
+- `/admin/about-us` — About Us content block editor
+- `/admin/media` — Media library (file/folder management)
+- `/admin/translations` — Translation management (XLIFF export/import)
+- `/admin/returns` — Returns management
+- `/admin/settings` — Store settings (delivery fees)
 
 ---
 
@@ -317,4 +367,4 @@ node scripts/create-admin-user.mjs admin@example.com "SecurePass123!" "Admin Nam
 
 ---
 
-_Last updated: March 2026 · Source: BRD-ECOM-2026-001 v5.0 + Implementation guides_
+_Last updated: April 2026 · Source: BRD-ECOM-2026-001 v5.0 + Implementation guides_

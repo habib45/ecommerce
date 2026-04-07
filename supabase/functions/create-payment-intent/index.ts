@@ -21,13 +21,27 @@ serve(async (req: Request) => {
   }
 
   try {
-    const authHeader = req.headers.get("Authorization")!;
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader) {
+      return new Response(JSON.stringify({ error: "Missing authorization header" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const supabase = createClient(supabaseUrl, serviceRoleKey);
 
     // Verify JWT
-    const { data: { user } } = await createClient(
+    const { data: { user }, error: authError } = await createClient(
       supabaseUrl, Deno.env.get("SUPABASE_ANON_KEY")!
     ).auth.getUser(authHeader.replace("Bearer ", ""));
+
+    if (authError || !user) {
+      return new Response(JSON.stringify({ error: "Invalid or expired token" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     const { cartId, currency, locale } = await req.json();
 
@@ -69,8 +83,8 @@ serve(async (req: Request) => {
       }
     }
 
-    // BRD §3.6.2 — idempotency key to prevent duplicate charges
-    const idempotencyKey = `pi_${cartId}_${Date.now()}`;
+    // BRD §3.6.2 — idempotency key: cart-{cartId}-{currency} prevents duplicate charges
+    const idempotencyKey = `cart-${cartId}-${currency}`;
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: total,

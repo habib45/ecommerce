@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { SEOHead } from "@/components/seo/SEOHead";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { useLocale } from "@/hooks/useLocale";
 import { useProducts, useFeaturedProducts } from "@/hooks/useProducts";
 import { ProductGrid } from "@/components/product/ProductGrid";
@@ -23,10 +24,13 @@ export function HomePage() {
 
   return (
     <>
-      <Helmet>
-        <title>{t("seo.homeTitle")}</title>
-        <meta name="description" content={t("seo.homeDescription")} />
-      </Helmet>
+      <SEOHead
+        title={t("seo.homeTitle")}
+        description={t("seo.homeDescription")}
+        path=""
+      />
+      <OrganizationJsonLd />
+      <WebSiteJsonLd />
 
       {/* Hero Section */}
       <HeroSlider />

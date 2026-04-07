@@ -302,6 +302,32 @@ export interface TranslationCompleteness {
   percentage: number;
 }
 
+// ─── Product Reviews & Ratings ────────────────────────────────────
+export interface ProductReview {
+  id: string;
+  product_id: string;
+  user_id: string;
+  rating: number;
+  title: string | null;
+  body: string | null;
+  is_approved: boolean;
+  created_at: string;
+  updated_at: string;
+  // Joined
+  user_name?: string;
+}
+
+export interface ProductRatingSummary {
+  product_id: string;
+  review_count: number;
+  avg_rating: number;
+  five_star: number;
+  four_star: number;
+  three_star: number;
+  two_star: number;
+  one_star: number;
+}
+
 // ─── Search ───────────────────────────────────────────────────────
 export interface SearchResult {
   id: string;

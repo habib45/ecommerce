@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
+import { SEOHead, BASE_URL } from '@/components/seo/SEOHead';
+import { ProductJsonLd, BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 import { useLocale } from '@/hooks/useLocale';
 import { useProduct, useRelatedProducts } from '@/hooks/useProducts';
 import { t as translate } from '@/lib/translate';
@@ -9,6 +10,9 @@ import { formatPrice } from '@/lib/format';
 import { useCartStore } from '@/stores/cartStore';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { ProductImageGallery } from '@/components/product/ProductImageGallery';
+import { ProductReviewSection } from '@/components/product/ProductReviewSection';
+import { StarRating } from '@/components/product/StarRating';
+import { useProductRatingSummary } from '@/hooks/useProductReviews';
 import toast from 'react-hot-toast';
 
 export function ProductDetailPage() {
@@ -19,6 +23,7 @@ export function ProductDetailPage() {
   const cartItems = useCartStore((s) => s.items);
   const { data: product, isLoading, error } = useProduct(slug ?? '', locale);
   const { data: related } = useRelatedProducts(product?.id ?? '', product?.category_id ?? null, locale);
+  const { data: ratingSummary } = useProductRatingSummary(product?.id ?? '');
 
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -53,10 +58,32 @@ export function ProductDetailPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDesc} />
-      </Helmet>
+      <SEOHead
+        title={metaTitle}
+        description={metaDesc ?? ''}
+        path={`/products/${slug}`}
+        image={images[0]?.url}
+        type="product"
+      />
+      <ProductJsonLd
+        name={name}
+        description={metaDesc ?? ''}
+        image={images[0]?.url ?? ''}
+        sku={variant?.sku ?? ''}
+        price={salePrice && salePrice > 0 ? salePrice : price}
+        currency={currency}
+        inStock={inStock}
+        url={`${BASE_URL}/${locale}/products/${slug}`}
+        rating={ratingSummary?.avg_rating}
+        reviewCount={ratingSummary?.review_count}
+      />
+      {product.category && (
+        <BreadcrumbJsonLd items={[
+          { name: t('nav.home'), url: `${BASE_URL}/${locale}` },
+          { name: translate(product.category.name, locale), url: `${BASE_URL}/${locale}/categories/${translate(product.category.slug, locale)}` },
+          { name, url: `${BASE_URL}/${locale}/products/${slug}` },
+        ]} />
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
@@ -81,6 +108,16 @@ export function ProductDetailPage() {
           {/* Info */}
           <div>
             <h1 className="text-3xl font-bold text-gray-900">{name}</h1>
+
+            {/* Rating summary */}
+            {ratingSummary && (
+              <div className="mt-2 flex items-center gap-2">
+                <StarRating rating={ratingSummary.avg_rating} size="sm" />
+                <span className="text-sm text-gray-600">
+                  {ratingSummary.avg_rating} ({ratingSummary.review_count})
+                </span>
+              </div>
+            )}
 
             <div className="mt-4 flex items-center gap-3">
               {salePrice != null && salePrice > 0 ? (
@@ -175,6 +212,9 @@ export function ProductDetailPage() {
             {variant && <p className="mt-4 text-xs text-gray-400">{t('product.sku')}: {variant.sku}</p>}
           </div>
         </div>
+
+        {/* Reviews & Ratings */}
+        <ProductReviewSection productId={product.id} />
 
         {/* Related */}
         {related && related.length > 0 && (

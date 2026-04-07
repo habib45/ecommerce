@@ -1,4 +1,4 @@
-import { Outlet, useParams, Navigate } from 'react-router-dom';
+import { Outlet, useParams, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -22,6 +22,13 @@ export function LocaleLayout() {
   const isBengali = locale === 'bn-BD';
   // BRD §4.7 — lang="bn" for Bangla, lang="sv" for Swedish
   const htmlLang = locale === 'bn-BD' ? 'bn' : locale;
+
+  const { pathname } = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   // Sync i18next when URL locale changes
   useEffect(() => {

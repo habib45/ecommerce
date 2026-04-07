@@ -1,7 +1,7 @@
 import { useSearchParams, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
+import { SEOHead } from '@/components/seo/SEOHead';
 import { useLocale } from '@/hooks/useLocale';
 import { useProducts } from '@/hooks/useProducts';
 import { ProductGrid } from '@/components/product/ProductGrid';
@@ -28,10 +28,12 @@ export function ProductListPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{searchQuery ? `"${searchQuery}" — ${t('seo.productsTitle')}` : t('seo.productsTitle')}</title>
-        <meta name="description" content={t('seo.productsDescription')} />
-      </Helmet>
+      <SEOHead
+        title={searchQuery ? `"${searchQuery}" — ${t('seo.productsTitle')}` : t('seo.productsTitle')}
+        description={t('seo.productsDescription')}
+        path={categorySlug ? `/categories/${categorySlug}` : '/products'}
+        noindex={!!searchQuery}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Toolbar */}

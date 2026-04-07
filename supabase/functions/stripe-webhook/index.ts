@@ -127,8 +127,11 @@ serve(async (req: Request) => {
 
   } catch (err: any) {
     console.error(`Webhook processing error: ${err.message}`);
-    // BRD §3.6.3 — webhook failures trigger alert; automatic retry
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+    // BRD §3.6.3 — return 200 even on handler error; log internally, never trigger Stripe retry loop
+    return new Response(JSON.stringify({ received: true, error: err.message }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   return new Response(JSON.stringify({ received: true }), {

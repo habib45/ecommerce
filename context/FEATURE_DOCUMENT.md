@@ -74,7 +74,22 @@ This document lists every feature by module, its implementation status, key file
 
 ---
 
-### 1.4 Search & Full-Text Search
+### 1.4 Categories List Page
+**Status:** ✅ Implemented
+**File:** `src/pages/CategoriesListPage.tsx`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Top-level category listing | ✅ | Filtered by `is_active` |
+| Child category grouping | ✅ | Children grouped under parent |
+| Category image display | ✅ | Thumbnail from category record |
+| Locale-aware names | ✅ | JSONB `name` resolved via locale |
+| Link to filtered product list | ✅ | Routes to `/categories/:slug` |
+| SEO meta tags | ✅ | Helmet with translated title/description |
+
+---
+
+### 1.5 Search & Full-Text Search
 **Status:** ✅ Implemented
 **File:** `src/hooks/useProducts.ts`
 
@@ -87,6 +102,49 @@ This document lists every feature by module, its implementation status, key file
 | Locale-aware search vectors | ✅ | Updated by PostgreSQL trigger |
 
 **Note:** Bangla FTS quality is limited with 'simple' config. Algolia integration is planned for Phase 2.
+
+---
+
+### 1.6 About Us Page
+**Status:** ✅ Implemented
+**File:** `src/pages/AboutUsPage.tsx`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Dynamic content from `content_blocks` table | ✅ | Fetched via `useActiveContentBlocks('about_us')` |
+| Multi-language support | ✅ | JSONB fields resolved per locale |
+| SEO meta tags | ✅ | Helmet with translated title/description |
+| Rich HTML rendering | ✅ | Supports formatted content blocks |
+
+**Hook:** `src/hooks/useContentBlocks.ts`
+
+---
+
+### 1.7 Contact Us Page
+**Status:** ✅ Implemented
+**File:** `src/pages/ContactUsPage.tsx`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Contact form (name, email, subject, message) | ✅ | Client-side form |
+| Form submission feedback | ✅ | Success state shown after submit |
+| Multi-language support | ✅ | All labels via react-i18next |
+| SEO meta tags | ✅ | Helmet with translated title/description |
+
+---
+
+### 1.8 FAQ Page
+**Status:** ✅ Implemented
+**File:** `src/pages/FAQPage.tsx`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Pre-populated FAQs (11 items) | ✅ | Across 6 categories (General, Products, Orders, Account, Shipping, Privacy) |
+| Search functionality | ✅ | Filters FAQs by search term |
+| Category filtering | ✅ | Filter by FAQ category |
+| Expandable accordion items | ✅ | Click to expand/collapse answers |
+| Multi-language support | ✅ | Labels via react-i18next |
+| SEO meta tags | ✅ | Helmet with translated title/description |
 
 ---
 
@@ -210,16 +268,21 @@ This document lists every feature by module, its implementation status, key file
 
 ---
 
-### 4.2 User Profile
-**Status:** 🔧 Partial
+### 4.2 User Profile & Account
+**Status:** ✅ Implemented
+**File:** `src/pages/AccountPage.tsx`
 
 | Feature | Status | Notes |
 |---|---|---|
 | Language preference | ✅ | Saved to `profiles.language_pref` |
 | Currency preference | ✅ | Saved to `profiles.currency_pref` |
-| Address book | 📋 | Planned |
-| Order history page | 📋 | Planned — RLS protects cross-user access |
+| Address book (saved addresses) | ✅ | Add, edit, delete, set default; labels: Home/Office/Other |
+| Order history page | ✅ | `src/pages/OrderHistoryPage.tsx` — lists user orders, RLS-protected |
+| Order detail page | ✅ | `src/pages/OrderDetailPage.tsx` — line items, status badge, return link |
+| Return request page | ✅ | `src/pages/ReturnRequestPage.tsx` — reason codes, line item selection |
 | Invoice download | 📋 | Planned — PDF in preferred locale |
+
+**Hooks:** `src/hooks/useShippingAddresses.ts`, `src/hooks/useSavedAddress.ts`
 
 ---
 
@@ -248,15 +311,15 @@ This document lists every feature by module, its implementation status, key file
 ## 6. Returns & Refunds
 
 ### 6.1 Return Flow
-**Status:** ✅ Admin UI implemented · 📋 Customer-facing UI needed
+**Status:** ✅ Admin + Customer UI implemented
 
 | Feature | Status | Notes |
 |---|---|---|
 | Admin returns queue | ✅ | Real-time updates via Supabase Realtime |
 | Return reason tracking | ✅ | Reason code + optional detail |
 | Return status workflow | ✅ | requested → info_requested → approved → received → refunded / rejected |
-| Customer return request UI | 📋 | Planned |
-| Refund via Stripe (Edge Function) | 📋 | `issue-refund/` function ready; admin button pending |
+| Customer return request UI | ✅ | `src/pages/ReturnRequestPage.tsx` — reason codes, line item selection, quantity + condition |
+| Refund via Stripe (Edge Function) | ✅ | `process-refund/` and `issue-refund/` Edge Functions |
 | Customer notification email | 📋 | Planned |
 
 ---
@@ -271,7 +334,7 @@ This document lists every feature by module, its implementation status, key file
 |---|---|---|
 | Total Orders count | ✅ | Live from Supabase |
 | Total Products count | ✅ | Live from Supabase |
-| Sidebar navigation | ✅ | Dashboard / Products / Orders / Translations / Returns |
+| Sidebar navigation | ✅ | Dashboard / Products / Categories / Orders / Customers / Visitor Analytics / Hero Slides / About Us / Media / Translations / Returns / Settings |
 
 ---
 
@@ -295,7 +358,7 @@ This document lists every feature by module, its implementation status, key file
 
 ### 7.3 Order Management
 **Status:** ✅ Implemented
-**URL:** `/admin/orders`
+**URL:** `/admin/orders` · `/admin/orders/{id}`
 
 | Feature | Status | Notes |
 |---|---|---|
@@ -304,8 +367,8 @@ This document lists every feature by module, its implementation status, key file
 | Currency-aware formatting | ✅ | |
 | Locale column | ✅ | Shows which locale order came from |
 | Sort: newest first | ✅ | |
-| Order detail view | 📋 | Click to expand — planned |
-| Edit order status from UI | 📋 | Planned |
+| Order detail view | ✅ | `src/pages/admin/OrderDetailPage.tsx` — full line items, customer info, status |
+| Edit order status from UI | ✅ | Dropdown with all status options; mutation updates DB |
 | Note / comment system | 📋 | Planned |
 | Bulk CSV export | 📋 | Planned |
 
@@ -378,7 +441,97 @@ This document lists every feature by module, its implementation status, key file
 
 ---
 
-### 7.7 Returns Management
+### 7.7 Category Management
+**Status:** ✅ Implemented
+**URL:** `/admin/categories` · `/admin/categories/{id}` · `/admin/categories/new`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Category listing table | ✅ | Name, active status, sort order |
+| Create new category | ✅ | |
+| Edit existing category | ✅ | |
+| Multi-language editor (EN / বাংলা / Svenska tabs) | ✅ | Name, slug, description, meta title, meta description |
+| Parent category selection | ✅ | Dropdown for hierarchical categories |
+| Active/inactive toggle | ✅ | `is_active` boolean |
+| Sort order control | ✅ | Numeric sort order |
+
+**Component:** `src/pages/admin/CategoryEditorPage.tsx`
+
+---
+
+### 7.8 Customer Management
+**Status:** ✅ Implemented
+**URL:** `/admin/customers`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Customer listing table | ✅ | DataTable with sorting/filtering |
+| Role badge display | ✅ | Color-coded: admin (red), store_manager (purple), support_agent (yellow), customer (gray) |
+| Create new user (admin) | ✅ | Full name, email, password, role; calls `admin-create-user` Edge Function |
+| Pagination | ✅ | 20 items per page |
+
+**Edge Function:** `supabase/functions/admin-create-user/`
+
+---
+
+### 7.9 Visitor Analytics
+**Status:** ✅ Implemented
+**URL:** `/admin/visitor-analytics`
+**Hook:** `src/hooks/useVisitorTracking.ts`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Daily visitor count | ✅ | Tracked per date |
+| Page views tracking | ✅ | Total page views per day |
+| Unique visitors | ✅ | Deduplicated visitor count |
+| Bounce rate | ✅ | Percentage |
+| Average session duration | ✅ | In seconds |
+| Country detection | ✅ | Timezone-based country detection |
+| Date range filtering | ✅ | Start/end date selectors |
+| Summary cards | ✅ | Totals and averages |
+| Data table with sorting | ✅ | Via DataTable component |
+| Client-side visitor tracking | ✅ | `src/lib/visitorTracking.ts` — VisitorTracker class |
+| RPC insert function | ✅ | `insert_visitor_analytics()` for public write access |
+
+**Database table:** `visitor_analytics` (migrations `00021`–`00029`)
+**RLS:** Public read access; writes via RPC function
+
+---
+
+### 7.10 Content Block Management (About Us)
+**Status:** ✅ Implemented
+**URL:** `/admin/about-us`
+**Hook:** `src/hooks/useContentBlocks.ts`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Content block listing | ✅ | Filtered by type (`about_us`, `contact_us`, etc.) |
+| Create/edit content blocks | ✅ | Rich text editor (react-quill-new) |
+| Multi-language content | ✅ | JSONB `name`, `body`, `cta_label`, `cta_url` |
+| Block types | ✅ | about_us, contact_us, banner, featured_section, promo |
+| Active/inactive toggle | ✅ | `is_active` boolean |
+| Sort order | ✅ | Numeric sort order |
+
+**Database table:** `content_blocks` (migration `00020_content_blocks_about_contact.sql`)
+
+---
+
+### 7.11 Store Settings
+**Status:** ✅ Implemented
+**URL:** `/admin/settings`
+**Hook:** `src/hooks/useStoreSettings.ts`
+
+| Feature | Status | Notes |
+|---|---|---|
+| Delivery fee configuration | ✅ | Per-currency: USD, BDT, SEK, EUR |
+| Currency-aware input | ✅ | Values in major units; stored in smallest unit |
+| Save/update delivery fees | ✅ | Mutation updates `store_settings` table |
+
+**Database table:** `store_settings` (migration `00012_store_settings.sql`)
+
+---
+
+### 7.12 Returns Management
 **Status:** ✅ Implemented
 **URL:** `/admin/returns`
 
@@ -452,6 +605,9 @@ This document lists every feature by module, its implementation status, key file
 
 | Feature | Status | Notes |
 |---|---|---|
+| Visitor analytics dashboard | ✅ | `/admin/visitor-analytics` — daily visitors, page views, bounce rate, country |
+| Client-side visitor tracking | ✅ | `src/lib/visitorTracking.ts` — session tracking, page view counting |
+| Country detection | ✅ | Timezone-based detection via `Intl.DateTimeFormat` |
 | Google Analytics 4 (via GTM) | 📋 | `locale` custom dimension on all events |
 | GA4 e-commerce events | 📋 | `view_item`, `add_to_cart`, `purchase`, etc. |
 | Meta Pixel | 📋 | Via GTM |
@@ -473,8 +629,8 @@ This document lists every feature by module, its implementation status, key file
 | ShipStation / EasyPost | P3 | Shipping label generation |
 | Twilio SMS | P3 | SMS in customer's language |
 | DeepL auto-translate (production) | P3 | Currently a UI placeholder |
-| Order detail page (admin) | P2 | Full order view with line items |
-| Customer address book | P2 | |
+| Order detail page (admin) | ✅ Done | `src/pages/admin/OrderDetailPage.tsx` — full order view with line items and status edit |
+| Customer address book | ✅ Done | `src/pages/AccountPage.tsx` — add, edit, delete, set default |
 | PDF invoices | P2 | In customer's preferred language; Bengali uses Noto Sans Bengali |
 | Quantity tiered pricing | P3 | |
 | Stock low-alert notifications | P2 | |
@@ -543,4 +699,4 @@ This document lists every feature by module, its implementation status, key file
 
 ---
 
-_Last updated: March 2026 · Source: BRD-ECOM-2026-001 v5.0 + Implementation guides_
+_Last updated: April 2026 · Source: BRD-ECOM-2026-001 v5.0 + Implementation guides_
