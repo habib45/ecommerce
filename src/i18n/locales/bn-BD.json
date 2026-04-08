@@ -129,7 +129,10 @@
     "orderConfirmed": "অর্ডার নিশ্চিত হয়েছে!",
     "orderNumber": "অর্ডার নং {{number}}",
     "thankYou": "আপনার অর্ডারের জন্য ধন্যবাদ",
-    "confirmationEmail": "{{email}} ঠিকানায় একটি নিশ্চিতকরণ ইমেইল পাঠানো হয়েছে"
+    "confirmationEmail": "{{email}} ঠিকানায় একটি নিশ্চিতকরণ ইমেইল পাঠানো হয়েছে",
+    "deliveryCharge": "ডেলিভারি চার্জ",
+    "serviceCharge": "ওয়েবসাইট সার্ভিস চার্জ",
+    "total": "পরিশোধ্য মোট"
   },
   "address": {
     "fullName": "পুরো নাম",

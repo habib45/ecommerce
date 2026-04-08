@@ -152,7 +152,10 @@
     "confirmationEmail": "A confirmation email has been sent to {{email}}",
     "continueShopping": "Continue shopping",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "deliveryCharge": "Delivery Charge",
+    "serviceCharge": "Website Service Charge",
+    "total": "Payable Total"
   },
   "address": {
     "fullName": "Full name",

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useLocale } from "@/hooks/useLocale";
 import { useCartStore } from "@/stores/cartStore";
-import { useDeliveryFee } from "@/hooks/useStoreSettings";
+import { useDeliveryFee, useServiceChargeRate } from "@/hooks/useStoreSettings";
 import { t as translate } from "@/lib/translate";
 import { formatPrice } from "@/lib/format";
 
@@ -13,6 +13,7 @@ export function CartPage() {
   const { items, loading, updateItemQuantity, removeItem, getSubtotal } = useCartStore();
   const subtotal = getSubtotal();
   const { data: deliveryFees } = useDeliveryFee();
+  const { data: serviceChargeRate } = useServiceChargeRate();
   const [stockError, setStockError] = useState<string | null>(null);
 
   const handleIncrement = (item: typeof items[0]) => {
@@ -26,7 +27,8 @@ export function CartPage() {
   };
 
   const deliveryCharge = deliveryFees?.[currency] ?? 0;
-  const serviceCharge = Math.round(subtotal * 0.05);
+  const ratePct = (serviceChargeRate ?? 500) / 10000;
+  const serviceCharge = Math.round(subtotal * ratePct);
   const total = subtotal + deliveryCharge + serviceCharge;
 
   if (loading) {

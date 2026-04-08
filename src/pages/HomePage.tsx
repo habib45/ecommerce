@@ -46,7 +46,7 @@ export function HomePage() {
           <div className="section">
             <div className="section-header">
               <div>
-                <h2 className="section-title text-balance">{t("product.featured")}</h2>
+                <h4 className="section-title text-balance">{t("product.featured")}</h4>
               </div>
               <Link to={`${prefix}/products`} className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors group w-full sm:w-auto justify-center sm:justify-start mt-3 sm:mt-0 px-4 py-2 sm:px-0 sm:py-0 ">
                 {t("common.viewAll")}
@@ -64,7 +64,7 @@ export function HomePage() {
       <section className="section section-padding">
         <div className="section-header">
           <div>
-            <h2 className="section-title text-balance">{t("home.newArrivals", "New Arrivals")}</h2>
+            <h4 className="section-title text-balance">{t("home.newArrivals", "New Arrivals")}</h4>
             {/* <p className="section-subtitle">{t("home.newArrivalsDesc", "The latest additions to our collection")}</p> */}
           </div>
           <Link to={`${prefix}/products`} className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors group w-full sm:w-auto justify-center sm:justify-start mt-3 sm:mt-0 px-4 py-2 sm:px-0 sm:py-0">

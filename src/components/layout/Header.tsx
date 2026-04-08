@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocale } from "@/hooks/useLocale";
 import { useCartStore } from "@/stores/cartStore";
 import { useAuthStore } from "@/stores/authStore";
+import { useAnnouncementBar } from "@/hooks/useStoreSettings";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { CurrencySwitcher } from "./CurrencySwitcher";
 import { CartDrawer } from "../cart/CartDrawer";
@@ -418,18 +419,22 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const { data: announcement } = useAnnouncementBar();
 
   const prefix = `/${locale}`;
 
+  const announcementText = announcement?.text
+    ? tr(announcement.text, locale)
+    : '';
+
   return (
     <>
-      {/* Top announcement bar */}
-      <div className="bg-primary text-primary-foreground text-center py-3 px-4 text-sm font-medium">
-        {t(
-          "home.announcement",
-          "Free shipping on orders over $50 • 30-day returns",
-        )}
-      </div>
+      {/* Top announcement bar — controlled from admin settings */}
+      {announcement?.enabled && announcementText && (
+        <div className="bg-primary-900 text-primary-foreground text-center py-3 px-4 text-sm font-medium">
+          {announcementText}
+        </div>
+      )}
 
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
         <div className="section">
