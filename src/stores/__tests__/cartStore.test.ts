@@ -154,6 +154,30 @@ describe('getSubtotal', () => {
     });
     expect(useCartStore.getState().getSubtotal()).toBe(0);
   });
+
+  it('falls back to 0 when currency key is missing from both sale_prices and prices', () => {
+    useCartStore.setState({
+      items: [
+        makeItem({
+          quantity: 1,
+          variant: {
+            id: 'v1',
+            product_id: 'p1',
+            sku: 'SKU',
+            name: { en: 'X' },
+            prices: {} as any,
+            sale_prices: {} as any,
+            sale_start: null,
+            sale_end: null,
+            stock_quantity: 5,
+            is_active: true,
+          },
+        }),
+      ],
+      currency: 'USD',
+    });
+    expect(useCartStore.getState().getSubtotal()).toBe(0);
+  });
 });
 
 describe('getOrderSummary', () => {

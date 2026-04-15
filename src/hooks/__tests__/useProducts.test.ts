@@ -222,6 +222,102 @@ describe('useProducts – basic (no filters)', () => {
     expect(result.current.data?.data).toEqual([]);
   });
 
+  it('sorts products by price_asc client-side', async () => {
+    const supabase = await getSupabaseMock();
+    const products = [
+      { id: 'p1', name: { en: 'Expensive' }, variants: [{ id: 'v1', prices: { USD: 3000 }, sale_prices: null }] },
+      { id: 'p2', name: { en: 'Cheap' }, variants: [{ id: 'v2', prices: { USD: 1000 }, sale_prices: null }] },
+    ];
+    const fromMock = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      or: vi.fn().mockReturnThis(),
+      order: vi.fn().mockReturnThis(),
+      range: vi.fn().mockResolvedValueOnce({ data: products, error: null, count: 2 }),
+    };
+    vi.mocked(supabase.from).mockReturnValue(fromMock as any);
+
+    const { result } = renderHook(
+      () => useProducts({ locale: 'en', sortBy: 'price_asc' }),
+      { wrapper: makeWrapper() },
+    );
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(result.current.data?.data[0].id).toBe('p2');
+    expect(result.current.data?.data[1].id).toBe('p1');
+  });
+
+  it('sorts products by price_desc client-side', async () => {
+    const supabase = await getSupabaseMock();
+    const products = [
+      { id: 'p1', name: { en: 'Cheap' }, variants: [{ id: 'v1', prices: { USD: 1000 }, sale_prices: null }] },
+      { id: 'p2', name: { en: 'Expensive' }, variants: [{ id: 'v2', prices: { USD: 3000 }, sale_prices: null }] },
+    ];
+    const fromMock = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      or: vi.fn().mockReturnThis(),
+      order: vi.fn().mockReturnThis(),
+      range: vi.fn().mockResolvedValueOnce({ data: products, error: null, count: 2 }),
+    };
+    vi.mocked(supabase.from).mockReturnValue(fromMock as any);
+
+    const { result } = renderHook(
+      () => useProducts({ locale: 'en', sortBy: 'price_desc' }),
+      { wrapper: makeWrapper() },
+    );
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(result.current.data?.data[0].id).toBe('p2');
+    expect(result.current.data?.data[1].id).toBe('p1');
+  });
+
+  it('uses sale_prices for sorting when present', async () => {
+    const supabase = await getSupabaseMock();
+    const products = [
+      { id: 'p1', name: { en: 'A' }, variants: [{ id: 'v1', prices: { USD: 5000 }, sale_prices: { USD: 500 } }] },
+      { id: 'p2', name: { en: 'B' }, variants: [{ id: 'v2', prices: { USD: 1000 }, sale_prices: null }] },
+    ];
+    const fromMock = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      or: vi.fn().mockReturnThis(),
+      order: vi.fn().mockReturnThis(),
+      range: vi.fn().mockResolvedValueOnce({ data: products, error: null, count: 2 }),
+    };
+    vi.mocked(supabase.from).mockReturnValue(fromMock as any);
+
+    const { result } = renderHook(
+      () => useProducts({ locale: 'en', sortBy: 'price_asc' }),
+      { wrapper: makeWrapper() },
+    );
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    // p1 sale_price 500 < p2 regular price 1000
+    expect(result.current.data?.data[0].id).toBe('p1');
+  });
+
+  it('falls back to 0 when product has no variants (covers ?? 0 branch in price sort)', async () => {
+    const supabase = await getSupabaseMock();
+    const products = [
+      { id: 'p1', name: { en: 'A' }, variants: [] },
+      { id: 'p2', name: { en: 'B' }, variants: [{ id: 'v2', prices: { USD: 1000 }, sale_prices: null }] },
+    ];
+    const fromMock = {
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      or: vi.fn().mockReturnThis(),
+      order: vi.fn().mockReturnThis(),
+      range: vi.fn().mockResolvedValueOnce({ data: products, error: null, count: 2 }),
+    };
+    vi.mocked(supabase.from).mockReturnValue(fromMock as any);
+
+    const { result } = renderHook(
+      () => useProducts({ locale: 'en', sortBy: 'price_asc' }),
+      { wrapper: makeWrapper() },
+    );
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    // p1 has no variants → price = 0, should come first for price_asc
+    expect(result.current.data?.data[0].id).toBe('p1');
+  });
+
   it('returns empty array when data is null (covers ?? [] branch)', async () => {
     const supabase = await getSupabaseMock();
     const fromMock = {
@@ -389,7 +485,7 @@ describe('useProductSearch', () => {
 
   it('throws when rpc errors (covers if(error) throw branch)', async () => {
     const supabase = await getSupabaseMock();
-    vi.mocked(supabase.rpc).mockResolvedValueOnce({ data: null, error: new Error('search failed') } as any);
+    (supabase as any).rpc = vi.fn().mockResolvedValue({ data: null, error: { message: 'search failed' } });
 
     const { result } = renderHook(() => useProductSearch('shirt', 'en'), { wrapper: makeWrapper() });
     await waitFor(() => expect(result.current.isError).toBe(true));
