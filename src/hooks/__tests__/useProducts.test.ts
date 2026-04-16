@@ -242,8 +242,8 @@ describe('useProducts – basic (no filters)', () => {
       { wrapper: makeWrapper() },
     );
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
-    expect(result.current.data?.data[0].id).toBe('p2');
-    expect(result.current.data?.data[1].id).toBe('p1');
+    expect(result.current.data!.data[0]!.id).toBe('p2');
+    expect(result.current.data!.data[1]!.id).toBe('p1');
   });
 
   it('sorts products by price_desc client-side', async () => {
@@ -266,8 +266,8 @@ describe('useProducts – basic (no filters)', () => {
       { wrapper: makeWrapper() },
     );
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
-    expect(result.current.data?.data[0].id).toBe('p2');
-    expect(result.current.data?.data[1].id).toBe('p1');
+    expect(result.current.data!.data[0]!.id).toBe('p2');
+    expect(result.current.data!.data[1]!.id).toBe('p1');
   });
 
   it('uses sale_prices for sorting when present', async () => {
@@ -291,7 +291,7 @@ describe('useProducts – basic (no filters)', () => {
     );
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
     // p1 sale_price 500 < p2 regular price 1000
-    expect(result.current.data?.data[0].id).toBe('p1');
+    expect(result.current.data!.data[0]!.id).toBe('p1');
   });
 
   it('falls back to 0 when product has no variants (covers ?? 0 branch in price sort)', async () => {
@@ -315,7 +315,7 @@ describe('useProducts – basic (no filters)', () => {
     );
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
     // p1 has no variants → price = 0, should come first for price_asc
-    expect(result.current.data?.data[0].id).toBe('p1');
+    expect(result.current.data!.data[0]!.id).toBe('p1');
   });
 
   it('returns empty array when data is null (covers ?? [] branch)', async () => {

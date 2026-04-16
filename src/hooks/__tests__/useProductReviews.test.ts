@@ -43,8 +43,8 @@ describe('useProductReviews', () => {
     const { result } = renderHook(() => useProductReviews('p1'), { wrapper: makeWrapper() });
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
     expect(result.current.data).toHaveLength(2);
-    expect(result.current.data![0].user_name).toBe('Alice');
-    expect(result.current.data![1].user_name).toBe('Bob');
+    expect(result.current.data![0]!.user_name).toBe('Alice');
+    expect(result.current.data![1]!.user_name).toBe('Bob');
   });
 
   it('falls back to Anonymous when user.full_name is null', async () => {
@@ -61,7 +61,7 @@ describe('useProductReviews', () => {
 
     const { result } = renderHook(() => useProductReviews('p1'), { wrapper: makeWrapper() });
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
-    expect(result.current.data![0].user_name).toBe('Anonymous');
+    expect(result.current.data![0]!.user_name).toBe('Anonymous');
   });
 
   it('returns empty array when data is null (covers ?? [] branch)', async () => {
